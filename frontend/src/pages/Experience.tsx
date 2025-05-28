@@ -115,7 +115,7 @@ const Experience: React.FC = () => {
 
         {/* Experience items */}
         <motion.div
-          className="space-y-8 md:space-y-8"
+          className="space-y-16 md:space-y-8"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
