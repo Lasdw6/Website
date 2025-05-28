@@ -115,7 +115,7 @@ const Experience: React.FC = () => {
 
         {/* Experience items */}
         <motion.div
-          className="space-y-8"
+          className="space-y-8 md:space-y-8"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -127,7 +127,7 @@ const Experience: React.FC = () => {
               custom={index}
               variants={itemVariants}
               className="relative flex items-center"
-              style={{ marginTop: index === 0 ? 0 : '-2rem' }}
+              style={{ marginTop: index === 0 ? 0 : '0' }}
             >
               {/* Timeline dot */}
               <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-red-600 rounded-full z-10" />
