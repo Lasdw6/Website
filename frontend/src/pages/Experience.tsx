@@ -127,7 +127,10 @@ const Experience: React.FC = () => {
               custom={index}
               variants={itemVariants}
               className="relative flex items-center mb-16 md:mb-8"
-              style={{ marginTop: index === 0 ? 0 : '0' }}
+              style={{ 
+                marginTop: index === 0 ? 0 : '4rem',
+                marginBottom: index === experiences.length - 1 ? 0 : '4rem'
+              }}
             >
               {/* Timeline dot */}
               <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-red-600 rounded-full z-10" />
