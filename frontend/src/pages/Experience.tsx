@@ -133,7 +133,7 @@ const Experience: React.FC = () => {
               }}
             >
               {/* Timeline dot */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-red-600 rounded-full z-10" />
+              <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-red-600 rounded-full z-10" />
 
               {/* Experience card */}
               <motion.div
