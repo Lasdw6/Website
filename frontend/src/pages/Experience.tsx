@@ -134,8 +134,8 @@ const Experience: React.FC = () => {
 
               {/* Experience card */}
               <motion.div
-                className={`w-7/12 bg-white p-6 rounded-lg shadow-md ${
-                  index % 2 === 0 ? 'mr-auto -ml-24' : 'ml-auto -mr-24'
+                className={`w-full md:w-7/12 bg-white p-4 md:p-6 rounded-lg shadow-md ${
+                  index % 2 === 0 ? 'md:mr-auto md:-ml-24' : 'md:ml-auto md:-mr-24'
                 }`}
                 whileHover={{ 
                   scale: 1.02,
@@ -143,19 +143,19 @@ const Experience: React.FC = () => {
                 }}
                 transition={{ duration: 0.2 }}
               >
-                <h3 className="text-xl font-semibold text-black mb-2">
+                <h3 className="text-lg md:text-xl font-semibold text-black mb-2">
                   {exp.title}
                 </h3>
-                <h4 className="text-lg text-red-600 mb-2">{exp.company}</h4>
-                <p className="text-gray-600 mb-4">{exp.period}</p>
+                <h4 className="text-base md:text-lg text-red-600 mb-2">{exp.company}</h4>
+                <p className="text-sm md:text-base text-gray-600 mb-4">{exp.period}</p>
                 
                 <div className="mb-4">
-                  <h5 className="text-sm font-semibold text-gray-700 mb-2">Key Skills:</h5>
+                  <h5 className="text-xs md:text-sm font-semibold text-gray-700 mb-2">Key Skills:</h5>
                   <div className="flex flex-wrap gap-2">
                     {exp.skills.map((skill, i) => (
                       <span
                         key={i}
-                        className="px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-sm"
+                        className="px-2 md:px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-xs md:text-sm"
                       >
                         {skill}
                       </span>
@@ -164,12 +164,12 @@ const Experience: React.FC = () => {
                 </div>
 
                 <div>
-                  <h5 className="text-sm font-semibold text-gray-700 mb-2">Technologies:</h5>
+                  <h5 className="text-xs md:text-sm font-semibold text-gray-700 mb-2">Technologies:</h5>
                   <div className="flex flex-wrap gap-2">
                     {exp.technologies.map((tech, techIndex) => (
                       <span
                         key={techIndex}
-                        className="px-3 py-1 bg-red-100 text-red-800 rounded-full text-sm"
+                        className="px-2 md:px-3 py-1 bg-red-100 text-red-800 rounded-full text-xs md:text-sm"
                       >
                         {tech}
                       </span>
