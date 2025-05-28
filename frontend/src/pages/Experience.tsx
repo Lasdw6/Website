@@ -126,7 +126,7 @@ const Experience: React.FC = () => {
               key={index}
               custom={index}
               variants={itemVariants}
-              className="relative flex items-center mb-16 md:mb-8"
+              className="relative flex items-center mb-16 md:mb-4"
               style={{ 
                 marginTop: index === 0 ? 0 : '4rem',
                 marginBottom: index === experiences.length - 1 ? 0 : '4rem'
