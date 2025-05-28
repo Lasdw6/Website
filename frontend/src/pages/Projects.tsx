@@ -22,7 +22,7 @@ const projects: Project[] = [
     period: "Apr. 2025 - May 2025",
     description: "Developed a research agent using LangGraph and LangChain frameworks that integrate multiple tools (such as Tavily Search, Audio processing, and Python code execution) for comprehensive information gathering. Implemented a ReAct (Reasoning, Action, Observation) pattern architecture for step-by-step decision-making and tool selection. The Agent has been submitted to the GAIA(General AI Assistant)-benchmark leaderboard for evaluation.",
     technologies: ["Python", "Langgraph", "Langchain", "Git"],
-    link: "https://huggingface.co/spaces/Lasdw/Deep-Research-Agent"
+    link: "https://huggingface.co/spaces/Lasdw/Deep_Research_Agent"
   },
   {
     title: "Job Application Tracker",
@@ -36,7 +36,7 @@ const projects: Project[] = [
     period: "Mar. 2024 - Present",
     description: "Designed and developed a modern, responsive personal portfolio website using React and TypeScript. Implemented smooth animations with Framer Motion, created a dynamic timeline for work experience, and built a grid-based project showcase. The website features a clean, professional design with a red color scheme and interactive elements.",
     technologies: ["React", "TypeScript", "Tailwind CSS", "Framer Motion", "Git"],
-    link: "https://github.com/Lasdw6"
+    link: "https://github.com/Lasdw6/Website"
   }
 ];
 
