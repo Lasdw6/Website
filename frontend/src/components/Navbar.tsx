@@ -53,7 +53,7 @@ const Navbar: React.FC = () => {
             ))}
             <div className="flex items-center space-x-4">
               <a
-                href="https://github.com/vividh-mahajan"
+                href="https://github.com/Lasdw6"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-700 hover:text-red-600 transition-colors duration-200"

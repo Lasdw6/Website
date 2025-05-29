@@ -57,7 +57,7 @@ const Contact: React.FC = () => {
           <h3 className="text-xl font-semibold text-black mb-4">Connect</h3>
           <div className="space-y-4">
             <a
-              href="https://github.com/vividh-mahajan"
+              href="https://github.com/Lasdw6"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center space-x-3 text-gray-700 hover:text-red-600 transition-colors"
