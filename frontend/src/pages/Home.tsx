@@ -14,7 +14,7 @@ const Home: React.FC = () => {
           <h1 className="text-5xl font-bold text-black mb-4">
             Hi, I'm Vividh Mahajan
           </h1>
-          <p className="text-xl text-gray-700 mb-8">
+          <p className="text-xl text-gray-700 mb-4">
             Combinatorics and Optimization Student @ University of Waterloo
           </p>
           <p className="text-lg text-gray-700 mb-6">
