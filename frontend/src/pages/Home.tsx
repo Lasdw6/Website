@@ -17,7 +17,7 @@ const Home: React.FC = () => {
           <p className="text-xl text-gray-700 mb-8">
             Combinatorics and Optimization Student @ University of Waterloo
           </p>
-          <p className="text-xl text-gray-700 mb-6">
+          <p className="text-lg text-gray-700 mb-6">
             Backend | AI/ML | Full Stack
           </p>
           <div className="flex justify-center gap-4">
