@@ -32,7 +32,4 @@
   
   <rect x="680" y="420" width="140" height="40" rx="20" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
   <text x="750" y="445" font-family="Arial, sans-serif" font-size="18" font-weight="600" text-anchor="middle" fill="white">Full Stack</text>
-  
-  <!-- Portfolio link -->
-  <text x="600" y="530" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="rgba(255,255,255,0.8)">vividhmahajan.dev</text>
 </svg> 
