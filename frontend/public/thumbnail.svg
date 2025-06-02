@@ -20,7 +20,7 @@
   
   <!-- Main content -->
   <text x="600" y="240" font-family="Arial, sans-serif" font-size="84" font-weight="bold" text-anchor="middle" fill="white" filter="url(#shadow)">Vividh Mahajan</text>
-  <text x="600" y="310" font-family="Arial, sans-serif" font-size="38" text-anchor="middle" fill="rgba(255,255,255,0.95)">Computer Science Student</text>
+  <text x="600" y="310" font-family="Arial, sans-serif" font-size="38" text-anchor="middle" fill="rgba(255,255,255,0.95)">Combinatorics & Optimization Student</text>
   <text x="600" y="360" font-family="Arial, sans-serif" font-size="32" text-anchor="middle" fill="rgba(255,255,255,0.9)">University of Waterloo</text>
   
   <!-- Skills tags -->
