@@ -82,25 +82,25 @@ const Experience: React.FC = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="max-w-6xl mx-auto">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="text-center mb-8"
+        className="text-center mb-16"
       >
-        <h1 className="text-3xl font-bold text-black mb-2">Work Experience</h1>
-        <p className="text-lg text-gray-700">
-          My professional journey and technical expertise
+        <h1 className="text-3xl font-bold text-black dark:text-dark-text mb-2">Experience</h1>
+        <p className="text-lg text-gray-700 dark:text-dark-muted">
+          My professional journey and accomplishments
         </p>
       </motion.div>
 
       <div className="relative pb-16">
         {/* Static Timeline line */}
-        <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 bg-red-600 h-full" />
+        <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 bg-red-600 dark:bg-red-400 h-full" />
 
         {/* Start flag at bottom */}
-        <div className="absolute left-1/2 bottom-0 transform -translate-x-1/2 w-10 h-10 bg-red-600 rounded-full z-10">
+        <div className="absolute left-1/2 bottom-0 transform -translate-x-1/2 w-10 h-10 bg-red-600 dark:bg-red-500 rounded-full z-10">
           <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white">
             <svg 
               xmlns="http://www.w3.org/2000/svg" 
@@ -133,12 +133,12 @@ const Experience: React.FC = () => {
               }}
             >
               {/* Timeline dot */}
-              <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-red-600 rounded-full z-10" />
+              <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-red-600 dark:bg-red-400 rounded-full z-10" />
 
               {/* Experience card */}
               <motion.div
-                className={`w-full md:w-7/12 bg-white p-4 md:p-6 rounded-lg shadow-md ${
-                  index % 2 === 0 ? 'md:mr-auto md:-ml-24' : 'md:ml-auto md:-mr-24'
+                className={`w-full md:w-7/12 bg-white dark:bg-dark-secondary p-4 md:p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 transition-colors ${
+                  index % 2 === 0 ? 'md:mr-auto md:-ml-32' : 'md:ml-auto md:-mr-32'
                 }`}
                 whileHover={{ 
                   scale: 1.02,
@@ -146,19 +146,19 @@ const Experience: React.FC = () => {
                 }}
                 transition={{ duration: 0.2 }}
               >
-                <h3 className="text-lg md:text-xl font-semibold text-black mb-2">
+                <h3 className="text-lg md:text-xl font-semibold text-black dark:text-dark-text mb-2">
                   {exp.title}
                 </h3>
-                <h4 className="text-base md:text-lg text-red-600 mb-2">{exp.company}</h4>
-                <p className="text-sm md:text-base text-gray-600 mb-4">{exp.period}</p>
+                <h4 className="text-base md:text-lg text-red-600 dark:text-red-400 mb-2">{exp.company}</h4>
+                <p className="text-sm md:text-base text-gray-600 dark:text-dark-muted mb-4">{exp.period}</p>
                 
                 <div className="mb-4">
-                  <h5 className="text-xs md:text-sm font-semibold text-gray-700 mb-2">Key Skills:</h5>
+                  <h5 className="text-xs md:text-sm font-semibold text-gray-700 dark:text-dark-muted mb-2">Key Skills:</h5>
                   <div className="flex flex-wrap gap-2">
                     {exp.skills.map((skill, i) => (
                       <span
                         key={i}
-                        className="px-2 md:px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-xs md:text-sm"
+                        className="px-2 md:px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300 rounded-full text-xs md:text-sm"
                       >
                         {skill}
                       </span>
@@ -166,13 +166,13 @@ const Experience: React.FC = () => {
                   </div>
                 </div>
 
-                <div>
-                  <h5 className="text-xs md:text-sm font-semibold text-gray-700 mb-2">Technologies:</h5>
+                <div className="mb-4">
+                  <h5 className="text-xs md:text-sm font-semibold text-gray-700 dark:text-dark-muted mb-2">Technologies:</h5>
                   <div className="flex flex-wrap gap-2">
-                    {exp.technologies.map((tech, techIndex) => (
+                    {exp.technologies.map((tech, i) => (
                       <span
-                        key={techIndex}
-                        className="px-2 md:px-3 py-1 bg-red-100 text-red-800 rounded-full text-xs md:text-sm"
+                        key={i}
+                        className="px-2 md:px-3 py-1 bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300 rounded-full text-xs md:text-sm"
                       >
                         {tech}
                       </span>

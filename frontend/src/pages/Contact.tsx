@@ -7,7 +7,7 @@ const Contact: React.FC = () => {
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="text-3xl font-bold text-black mb-8"
+        className="text-3xl font-bold text-black dark:text-dark-text mb-8"
       >
         Contact Me
       </motion.h2>
@@ -16,17 +16,17 @@ const Contact: React.FC = () => {
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.2 }}
-          className="bg-white p-6 rounded-lg shadow-md"
+          className="bg-white dark:bg-dark-secondary p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 transition-colors"
         >
-          <h3 className="text-xl font-semibold text-black mb-4">Get in Touch</h3>
-          <p className="text-gray-700 mb-6">
+          <h3 className="text-xl font-semibold text-black dark:text-dark-text mb-4">Get in Touch</h3>
+          <p className="text-gray-700 dark:text-dark-muted mb-6">
             I'm always open to discussing new projects, creative ideas, or
             opportunities to be part of your vision.
           </p>
           <div className="space-y-4">
             <div className="flex items-center space-x-3">
               <svg
-                className="w-6 h-6 text-red-600"
+                className="w-6 h-6 text-red-600 dark:text-red-400"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -40,7 +40,7 @@ const Contact: React.FC = () => {
               </svg>
               <a
                 href="mailto:v7mahaja@uwaterloo.ca"
-                className="text-gray-700 hover:text-red-600 transition-colors"
+                className="text-gray-700 dark:text-dark-muted hover:text-red-600 dark:hover:text-red-400 transition-colors"
               >
                 v7mahaja@uwaterloo.ca
               </a>
@@ -52,15 +52,15 @@ const Contact: React.FC = () => {
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.4 }}
-          className="bg-white p-6 rounded-lg shadow-md"
+          className="bg-white dark:bg-dark-secondary p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 transition-colors"
         >
-          <h3 className="text-xl font-semibold text-black mb-4">Connect</h3>
+          <h3 className="text-xl font-semibold text-black dark:text-dark-text mb-4">Connect</h3>
           <div className="space-y-4">
             <a
               href="https://github.com/Lasdw6"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center space-x-3 text-gray-700 hover:text-red-600 transition-colors"
+              className="flex items-center space-x-3 text-gray-700 dark:text-dark-muted hover:text-red-600 dark:hover:text-red-400 transition-colors"
             >
               <svg
                 className="w-6 h-6"
@@ -79,7 +79,7 @@ const Contact: React.FC = () => {
               href="https://linkedin.com/in/vividhm"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center space-x-3 text-gray-700 hover:text-red-600 transition-colors"
+              className="flex items-center space-x-3 text-gray-700 dark:text-dark-muted hover:text-red-600 dark:hover:text-red-400 transition-colors"
             >
               <svg
                 className="w-6 h-6"
@@ -96,7 +96,7 @@ const Contact: React.FC = () => {
               href="https://huggingface.co/Lasdw"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center space-x-3 text-gray-700 hover:text-red-600 transition-colors"
+              className="flex items-center space-x-3 text-gray-700 dark:text-dark-muted hover:text-red-600 dark:hover:text-red-400 transition-colors"
             >
               <img
                 src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg"

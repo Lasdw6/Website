@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import DarkModeToggle from './DarkModeToggle';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,13 +27,13 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="bg-white shadow-md fixed w-full top-0 z-50 border-b border-gray-200">
+    <nav className="bg-white dark:bg-dark-primary shadow-md fixed w-full top-0 z-50 border-b border-gray-200 dark:border-gray-700 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <a 
               href="#home" 
-              className="text-2xl font-bold text-red-600"
+              className="text-2xl font-bold text-red-600 dark:text-red-400"
               onClick={(e) => scrollToSection(e, '#home')}
             >
               Vividh Mahajan
@@ -46,17 +47,18 @@ const Navbar: React.FC = () => {
                 key={item.name}
                 href={item.href}
                 onClick={(e) => scrollToSection(e, item.href)}
-                className="text-gray-700 hover:text-red-600 transition-colors duration-200"
+                className="text-gray-700 dark:text-dark-text hover:text-red-600 dark:hover:text-red-400 transition-colors duration-200"
               >
                 {item.name}
               </a>
             ))}
+            
             <div className="flex items-center space-x-4">
               <a
                 href="https://github.com/Lasdw6"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-700 hover:text-red-600 transition-colors duration-200"
+                className="text-gray-700 dark:text-dark-text hover:text-red-600 dark:hover:text-red-400 transition-colors duration-200"
               >
                 <svg
                   className="h-6 w-6"
@@ -75,7 +77,7 @@ const Navbar: React.FC = () => {
                 href="https://linkedin.com/in/vividhm"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-700 hover:text-red-600 transition-colors duration-200"
+                className="text-gray-700 dark:text-dark-text hover:text-red-600 dark:hover:text-red-400 transition-colors duration-200"
               >
                 <svg
                   className="h-6 w-6"
@@ -92,7 +94,7 @@ const Navbar: React.FC = () => {
                 href="https://huggingface.co/Lasdw"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-700 hover:text-red-600 transition-colors duration-200"
+                className="text-gray-700 dark:text-dark-text hover:text-red-600 dark:hover:text-red-400 transition-colors duration-200"
               >
                 <img
                   src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg"
@@ -103,14 +105,16 @@ const Navbar: React.FC = () => {
                   onMouseOut={(e) => e.currentTarget.style.filter = 'grayscale(100%)'}
                 />
               </a>
+              <DarkModeToggle />
             </div>
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
+          <div className="md:hidden flex items-center space-x-2">
+            <DarkModeToggle />
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-700 hover:text-red-600 focus:outline-none"
+              className="text-gray-700 dark:text-dark-text hover:text-red-600 dark:hover:text-red-400 focus:outline-none"
             >
               {isOpen ? (
                 <XMarkIcon className="h-6 w-6" />
@@ -128,7 +132,7 @@ const Navbar: React.FC = () => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
-          className="md:hidden"
+          className="md:hidden bg-white dark:bg-dark-primary border-t border-gray-200 dark:border-gray-700"
         >
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {navItems.map((item) => (
@@ -136,17 +140,17 @@ const Navbar: React.FC = () => {
                 key={item.name}
                 href={item.href}
                 onClick={(e) => scrollToSection(e, item.href)}
-                className="block px-3 py-2 text-gray-700 hover:text-red-600 transition-colors duration-200"
+                className="block px-3 py-2 text-gray-700 dark:text-dark-text hover:text-red-600 dark:hover:text-red-400 transition-colors duration-200"
               >
                 {item.name}
               </a>
             ))}
             <div className="flex items-center space-x-4 px-3 py-2">
               <a
-                href="https://github.com/vividh-mahajan"
+                href="https://github.com/Lasdw6"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-700 hover:text-red-600 transition-colors duration-200"
+                className="text-gray-700 dark:text-dark-text hover:text-red-600 dark:hover:text-red-400 transition-colors duration-200"
               >
                 <svg
                   className="h-6 w-6"
@@ -165,7 +169,7 @@ const Navbar: React.FC = () => {
                 href="https://linkedin.com/in/vividhm"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-700 hover:text-red-600 transition-colors duration-200"
+                className="text-gray-700 dark:text-dark-text hover:text-red-600 dark:hover:text-red-400 transition-colors duration-200"
               >
                 <svg
                   className="h-6 w-6"
@@ -182,7 +186,7 @@ const Navbar: React.FC = () => {
                 href="https://huggingface.co/Lasdw"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-700 hover:text-red-600 transition-colors duration-200"
+                className="text-gray-700 dark:text-dark-text hover:text-red-600 dark:hover:text-red-400 transition-colors duration-200"
               >
                 <img
                   src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg"

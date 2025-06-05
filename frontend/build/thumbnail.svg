@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#dc2626;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#b91c1c;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="rgba(0,0,0,0.3)"/>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGradient)"/>
+  
+  <!-- Decorative elements -->
+  <circle cx="150" cy="150" r="60" fill="rgba(255,255,255,0.1)"/>
+  <circle cx="1050" cy="480" r="80" fill="rgba(255,255,255,0.08)"/>
+  <rect x="950" y="50" width="200" height="4" rx="2" fill="rgba(255,255,255,0.15)"/>
+  <rect x="950" y="70" width="150" height="4" rx="2" fill="rgba(255,255,255,0.1)"/>
+  
+  <!-- Main content -->
+  <text x="600" y="240" font-family="Arial, sans-serif" font-size="84" font-weight="bold" text-anchor="middle" fill="white" filter="url(#shadow)">Vividh Mahajan</text>
+  <text x="600" y="310" font-family="Arial, sans-serif" font-size="38" text-anchor="middle" fill="rgba(255,255,255,0.95)">Combinatorics & Optimization Student</text>
+  <text x="600" y="360" font-family="Arial, sans-serif" font-size="32" text-anchor="middle" fill="rgba(255,255,255,0.9)">University of Waterloo</text>
+  
+  <!-- Skills tags -->
+  <rect x="380" y="420" width="120" height="40" rx="20" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
+  <text x="440" y="445" font-family="Arial, sans-serif" font-size="18" font-weight="600" text-anchor="middle" fill="white">AI/ML</text>
+  
+  <rect x="520" y="420" width="140" height="40" rx="20" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
+  <text x="590" y="445" font-family="Arial, sans-serif" font-size="18" font-weight="600" text-anchor="middle" fill="white">Backend</text>
+  
+  <rect x="680" y="420" width="140" height="40" rx="20" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
+  <text x="750" y="445" font-family="Arial, sans-serif" font-size="18" font-weight="600" text-anchor="middle" fill="white">Full Stack</text>
+</svg> 

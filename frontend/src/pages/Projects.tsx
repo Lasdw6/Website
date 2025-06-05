@@ -49,8 +49,8 @@ const Projects: React.FC = () => {
         transition={{ duration: 0.5 }}
         className="text-center mb-12"
       >
-        <h1 className="text-3xl font-bold text-black mb-2">Projects</h1>
-        <p className="text-lg text-gray-700">
+        <h1 className="text-3xl font-bold text-black dark:text-dark-text mb-2">Projects</h1>
+        <p className="text-lg text-gray-700 dark:text-dark-muted">
           My recent work and personal projects
         </p>
       </motion.div>
@@ -62,15 +62,15 @@ const Projects: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow"
+            className="bg-white dark:bg-dark-secondary p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-gray-200 dark:border-gray-700"
           >
-            <h2 className="text-xl font-semibold text-black mb-2">{project.title}</h2>
-            <p className="text-gray-700 mb-4">{project.description}</p>
+            <h2 className="text-xl font-semibold text-black dark:text-dark-text mb-2">{project.title}</h2>
+            <p className="text-gray-700 dark:text-dark-muted mb-4">{project.description}</p>
             <div className="flex flex-wrap gap-2 mb-4">
               {project.technologies.map((tech, techIndex) => (
                 <span
                   key={techIndex}
-                  className="px-3 py-1 bg-red-100 text-red-800 rounded-full text-sm"
+                  className="px-3 py-1 bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300 rounded-full text-sm"
                 >
                   {tech}
                 </span>
@@ -80,7 +80,7 @@ const Projects: React.FC = () => {
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-red-600 hover:text-red-800 transition-colors"
+              className="text-red-600 dark:text-red-400 hover:text-red-800 dark:hover:text-red-300 transition-colors"
             >
               View Project →
             </a>
