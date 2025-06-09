@@ -12,13 +12,13 @@ interface ExperienceItem {
 const experiences: ExperienceItem[] = [
   {
     title: "Software Engineering Intern",
-    company: "GOQii - Mobile Vision Team",
+    company: "GOQii",
     period: "May 2025 - Aug. 2025",
     skills: [
       "Computer Vision",
       "Deep Learning",
-      "Mobile App Development",
-      "User Experience",
+      "LLM",
+      "RAG",
       "Performance Optimization"
     ],
     technologies: ["Computer Vision", "Deep Learning", "Mobile Development"]

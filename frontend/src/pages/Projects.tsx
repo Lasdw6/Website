@@ -37,6 +37,13 @@ const projects: Project[] = [
     description: "Designed and developed a modern, responsive personal portfolio website using React and TypeScript. Implemented smooth animations with Framer Motion, created a dynamic timeline for work experience, and built a grid-based project showcase. The website features a clean, professional design with a red color scheme and interactive elements.",
     technologies: ["React", "TypeScript", "Tailwind CSS", "Framer Motion", "Git"],
     link: "https://github.com/Lasdw6/Website"
+  },
+  {
+    title: "Chess Game with Computer Players",
+    period: "June 2024 - Aug. 2024",
+    description: "Built a chess game from scratch with computer-controlled opponents using C++. Implemented the Observer Design Pattern to optimize memory management, promote code reusability, and maintain flexibility in-game components. Developed an algorithm for real-time move generation and evaluation, allowing the computer to anticipate player moves and respond with strategic counterplays.",
+    technologies: ["C++", "std::vector", "OOP"],
+    link: "https://github.com/Lasdw6/chess.exe"
   }
 ];
 

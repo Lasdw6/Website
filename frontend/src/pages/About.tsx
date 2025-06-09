@@ -1,62 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-interface AboutData {
-  name: string;
-  title: string;
-  education: {
-    school: string;
-    degree: string;
-    period: string;
-    location: string;
-    coursework: string[];
-    externalCourses: string[];
-  };
-  skills: {
-    languages: string[];
-    tools: string[];
-    frameworks: string[];
-  };
-  contact: {
-    email: string;
-    phone: string;
-    github: string;
-    linkedin: string;
-  };
-}
-
-const aboutData: AboutData = {
-  name: "Vividh Mahajan",
-  title: "Computer Science Student at University of Waterloo",
-  education: {
-    school: "University of Waterloo",
-    degree: "Bachelor of Mathematics in Combinatorics and Optimization, minor in Computer Science",
-    period: "Sep. 2023 - Present",
-    location: "Waterloo, ON",
-    coursework: [
-      "Tools for Software Development",
-      "Algorithm Design and Data Abstraction",
-      "Object-Oriented Software Development",
-      "Linear Programming",
-      "Optimization"
-    ],
-    externalCourses: [
-      "Deep Learning Specialization - Deeplearning.ai (125 Hours - ongoing)"
-    ]
-  },
-  skills: {
-    languages: ["Python", "C++", "Typescript", "HTML", "CSS", "SQL", "Git"],
-    tools: ["Docker", "AWS", "Google Cloud", "Pinecone", "LinuxCLI", "GitHub", "REST APIs"],
-    frameworks: ["Pytorch", "React", "Langchain", "Huggingface", "OpenAI", "Scikit-learn", "Pandas", "Numpy"]
-  },
-  contact: {
-    email: "v7mahaja@uwaterloo.ca",
-    phone: "548-922-2600",
-    github: "github.com/Lasdw6",
-    linkedin: "linkedin.com/in/vividhm"
-  }
-};
-
 const About: React.FC = () => {
   const skills = [
     'Python',
