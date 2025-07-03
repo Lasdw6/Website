@@ -15,18 +15,6 @@ const Navbar: React.FC = () => {
     { name: 'Contact', href: '/#contact' },
   ];
 
-  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
-    setIsOpen(false);
-  };
-
   return (
     <nav className="bg-white dark:bg-dark-primary shadow-md fixed w-full top-0 z-50 border-b border-gray-200 dark:border-gray-700 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

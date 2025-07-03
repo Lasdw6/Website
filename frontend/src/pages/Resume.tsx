@@ -23,7 +23,7 @@ const Resume: React.FC = () => {
         </script>
         <object data="/resume.pdf" type="application/pdf" width="100%" height="800px">
           <p className="text-gray-700 dark:text-dark-muted">
-            Your browser does not support PDFs. Download here: <a href="/resume.pdf" className="text-red-600 dark:text-red-400 hover:underline">Download Resume</a>.
+            Your browser does not support PDFs. Download here: <a href="/resume.pdf" download="Vividh_Mahajan_Resume.pdf" className="text-red-600 dark:text-red-400 hover:underline">Download Resume</a>.
           </p>
         </object>
       </motion.div>
