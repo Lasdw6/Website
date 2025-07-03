@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { DocumentIcon } from '@heroicons/react/24/outline';
 
 const Contact: React.FC = () => {
   return (
@@ -56,6 +57,15 @@ const Contact: React.FC = () => {
         >
           <h3 className="text-xl font-semibold text-black dark:text-dark-text mb-4">Connect</h3>
           <div className="space-y-4">
+            <a
+              href="/resume"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center space-x-3 text-gray-700 dark:text-dark-muted hover:text-red-600 dark:hover:text-red-400 transition-colors"
+            >
+              <DocumentIcon className="w-6 h-6" />
+              <span>Resume</span>
+            </a>
             <a
               href="https://github.com/Lasdw6"
               target="_blank"

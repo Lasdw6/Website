@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import { Bars3Icon, XMarkIcon, DocumentIcon } from '@heroicons/react/24/outline';
 import DarkModeToggle from './DarkModeToggle';
+import { Link } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
-    { name: 'Home', href: '#home' },
-    { name: 'Experience', href: '#experience' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'About', href: '#about' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Home', href: '/#home' },
+    { name: 'Experience', href: '/#experience' },
+    { name: 'Projects', href: '/#projects' },
+    { name: 'About', href: '/#about' },
+    { name: 'Contact', href: '/#contact' },
   ];
 
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -31,29 +32,49 @@ const Navbar: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
-            <a 
-              href="#home" 
+            <Link
+              to="/"
               className="text-2xl font-bold text-red-600 dark:text-red-400"
-              onClick={(e) => scrollToSection(e, '#home')}
             >
               Vividh Mahajan
-            </a>
+            </Link>
           </div>
 
           {/* Desktop menu */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                onClick={(e) => scrollToSection(e, item.href)}
-                className="text-gray-700 dark:text-dark-text hover:text-red-600 dark:hover:text-red-400 transition-colors duration-200"
-              >
-                {item.name}
-              </a>
+              item.href.startsWith('/#') ? (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className="text-gray-700 dark:text-dark-text hover:text-red-600 dark:hover:text-red-400 transition-colors duration-200"
+                >
+                  {item.name}
+                </a>
+              ) : (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  className="text-gray-700 dark:text-dark-text hover:text-red-600 dark:hover:text-red-400 transition-colors duration-200"
+                  title={item.name}
+                >
+                  {item.name === 'Resume' ? (
+                    <DocumentIcon className="h-6 w-6" />
+                  ) : (
+                    item.name
+                  )}
+                </Link>
+              )
             ))}
             
             <div className="flex items-center space-x-4">
+              <Link
+                to="/resume"
+                className="text-gray-700 dark:text-dark-text hover:text-red-600 dark:hover:text-red-400 transition-colors duration-200"
+                title="Resume"
+              >
+                <DocumentIcon className="h-6 w-6" />
+              </Link>
               <a
                 href="https://github.com/Lasdw6"
                 target="_blank"
@@ -136,16 +157,37 @@ const Navbar: React.FC = () => {
         >
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {navItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                onClick={(e) => scrollToSection(e, item.href)}
-                className="block px-3 py-2 text-gray-700 dark:text-dark-text hover:text-red-600 dark:hover:text-red-400 transition-colors duration-200"
-              >
-                {item.name}
-              </a>
+              item.href.startsWith('/#') ? (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className="block px-3 py-2 text-gray-700 dark:text-dark-text hover:text-red-600 dark:hover:text-red-400 transition-colors duration-200"
+                >
+                  {item.name}
+                </a>
+              ) : (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  className="block px-3 py-2 text-gray-700 dark:text-dark-text hover:text-red-600 dark:hover:text-red-400 transition-colors duration-200"
+                  title={item.name}
+                >
+                  {item.name === 'Resume' ? (
+                    <DocumentIcon className="h-6 w-6" />
+                  ) : (
+                    item.name
+                  )}
+                </Link>
+              )
             ))}
             <div className="flex items-center space-x-4 px-3 py-2">
+              <Link
+                to="/resume"
+                className="text-gray-700 dark:text-dark-text hover:text-red-600 dark:hover:text-red-400 transition-colors duration-200"
+                title="Resume"
+              >
+                <DocumentIcon className="h-6 w-6" />
+              </Link>
               <a
                 href="https://github.com/Lasdw6"
                 target="_blank"

@@ -32,7 +32,7 @@ async def get_projects():
             title="Personal Website",
             description="A modern personal website built with FastAPI and React",
             technologies=["Python", "TypeScript", "React", "FastAPI"],
-            link="https://github.com/yourusername/personal-website"
+            link="https://github.com/Lasdw6/Website"
         ),
         # Add more projects here
     ]

@@ -32,6 +32,13 @@ const projects: Project[] = [
     link: "https://github.com/Lasdw6"
   },
   {
+    title: "Tea Tree Chat",
+    period: "June 2025 - Present",
+    description: "Developed an open-source chat application as an aleternative to ChatGPT, that works on a BYOK(Bring Your Own Key) model. The application is built with Python, FastAPI, Langchain, Pinecone, AWS, Docker, and Git. The application is hosted on AWS Fargate using Docker, and the Pinecone database is hosted on AWS RDS.",
+    technologies: ["Python", "FastAPI", "Next.js", "Typescript", "Postgres", "Langchain", "Git"],
+    link: "https://askteatree.chat"
+  },
+  {
     title: "Personal Portfolio Website",
     period: "Mar. 2024 - Present",
     description: "Designed and developed a modern, responsive personal portfolio website using React and TypeScript. Implemented smooth animations with Framer Motion, created a dynamic timeline for work experience, and built a grid-based project showcase. The website features a clean, professional design with a red color scheme and interactive elements.",
