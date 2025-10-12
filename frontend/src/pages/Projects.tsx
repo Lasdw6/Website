@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 
 interface Project {
   title: string;
@@ -7,54 +7,68 @@ interface Project {
   technologies: string[];
   link: string;
   period: string;
+  image: string;
 }
 
 const projects: Project[] = [
   {
     title: "Agentic Personal Assistant",
     period: "Jan. 2025 - Present",
-    description: "Developed a personal assistant using Python and FastAPI, integrating retrieval-augmented generation (RAG) with Pinecone for efficient knowledge retrieval. Designed the architecture using Model Context Protocol(MCP) and the Evaluator-Optimizer workflow. Built and deployed the assistant on AWS Fargate using Docker, ensuring scalability and efficient API performance.",
+    description: "AI-powered personal assistant with RAG, FastAPI, and cloud deployment.",
     technologies: ["Python", "FastAPI", "Langchain", "Pinecone", "AWS", "Docker", "Git"],
-    link: "https://github.com/Lasdw6"
+    link: "https://github.com/Lasdw6",
+    image: "image.png"
   },
   {
     title: "Deep Research Agent",
     period: "Apr. 2025 - May 2025",
-    description: "Developed a research agent using LangGraph and LangChain frameworks that integrate multiple tools (such as Tavily Search, Audio processing, and Python code execution) for comprehensive information gathering. Implemented a ReAct (Reasoning, Action, Observation) pattern architecture for step-by-step decision-making and tool selection. The Agent has been submitted to the GAIA(General AI Assistant)-benchmark leaderboard for evaluation.",
+    description: "Research agent integrating multiple tools and ReAct pattern for decision-making.",
     technologies: ["Python", "Langgraph", "Langchain", "Git"],
-    link: "https://huggingface.co/spaces/Lasdw/Deep_Research_Agent"
+    link: "https://huggingface.co/spaces/Lasdw/Deep_Research_Agent",
+    image: "Deep_Research_Agent.png"
   },
   {
     title: "Job Application Tracker",
     period: "June 2024 - Sep. 2024",
-    description: "Developed a web application to help users track and manage their job applications efficiently. Successfully launched a closed beta testing phase with 20 registered users, using Google OAuth2. Used LLMs to parse and categorize email data. Utilized Docker to deploy the Django server on AWS, and MongoDB to store login credentials.",
+    description: "Web app for tracking job applications, with LLM email parsing and cloud deployment.",
     technologies: ["Python", "Typescript", "React", "MongoDB", "OAuth2", "LLMs", "Git"],
-    link: "https://github.com/Lasdw6"
+    link: "https://github.com/Lasdw6",
+    image: "JobTracker.png"
   },
   {
     title: "Tea Tree Chat",
     period: "June 2025 - Present",
-    description: "Developed an open-source chat application as an aleternative to ChatGPT, that works on a BYOK(Bring Your Own Key) model. The application is built with Python, FastAPI, Langchain, Pinecone, AWS, Docker, and Git. The application is hosted on AWS Fargate using Docker, and the Pinecone database is hosted on AWS RDS.",
+    description: "Open-source BYOK chat app alternative to ChatGPT, built with FastAPI and AWS.",
     technologies: ["Python", "FastAPI", "Next.js", "Typescript", "Postgres", "Langchain", "Git"],
-    link: "https://askteatree.chat"
+    link: "https://askteatree.chat",
+    image: "Teatree.png"
   },
   {
     title: "Personal Portfolio Website",
     period: "Mar. 2024 - Present",
-    description: "Designed and developed a modern, responsive personal portfolio website using React and TypeScript. Implemented smooth animations with Framer Motion, created a dynamic timeline for work experience, and built a grid-based project showcase. The website features a clean, professional design with a red color scheme and interactive elements.",
+    description: "Modern, responsive portfolio website with animations and project showcase.",
     technologies: ["React", "TypeScript", "Tailwind CSS", "Framer Motion", "Git"],
-    link: "https://github.com/Lasdw6/Website"
+    link: "https://github.com/Lasdw6/Website",
+    image: "image.png"
   },
   {
     title: "Chess Game with Computer Players",
     period: "June 2024 - Aug. 2024",
-    description: "Built a chess game from scratch with computer-controlled opponents using C++. Implemented the Observer Design Pattern to optimize memory management, promote code reusability, and maintain flexibility in-game components. Developed an algorithm for real-time move generation and evaluation, allowing the computer to anticipate player moves and respond with strategic counterplays.",
+    description: "Chess game with computer AI, real-time move generation, and OOP design.",
     technologies: ["C++", "std::vector", "OOP"],
-    link: "https://github.com/Lasdw6/chess.exe"
+    link: "https://github.com/Lasdw6/chess.exe",
+    image: "chess.jpg"
   }
 ];
 
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 50, scale: 0.8 },
+  visible: { opacity: 1, y: 0, scale: 1, transition: { type: 'spring', stiffness: 100, damping: 12, mass: 1 } }
+};
+
 const Projects: React.FC = () => {
+  const diagramData = '{"highlight":"#0000ff","nav":true,"resize":true,"toolbar":"zoom","edit":false,"url":"/flowchart.drawio"}';
+
   return (
     <div className="max-w-7xl mx-auto">
       <motion.div
@@ -69,37 +83,51 @@ const Projects: React.FC = () => {
         </p>
       </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {projects.map((project, index) => (
-          <motion.div
+          <motion.a
             key={index}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="bg-white dark:bg-dark-secondary p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 border border-gray-200 dark:border-gray-700"
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            variants={cardVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            whileHover={{ scale: 1.05, boxShadow: '0 10px 30px -10px rgba(0,0,0,0.2)' }}
+            className="bg-white dark:bg-dark-secondary rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-gray-700 flex flex-col overflow-hidden cursor-pointer"
           >
-            <h2 className="text-xl font-semibold text-black dark:text-dark-text mb-2">{project.title}</h2>
-            <p className="text-gray-700 dark:text-dark-muted mb-4">{project.description}</p>
-            <div className="flex flex-wrap gap-2 mb-4">
-              {project.technologies.map((tech, techIndex) => (
-                <span
-                  key={techIndex}
-                  className="px-3 py-1 bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300 rounded-full text-sm"
-                >
-                  {tech}
-                </span>
-              ))}
+            <img src={project.image} alt={project.title} className="w-full h-64 object-cover"/>
+            <div className="p-6 flex-grow flex flex-col">
+              <div className="flex-grow">
+                <div className="flex justify-between items-start mb-4">
+                  <h2 className="text-2xl font-bold text-black dark:text-dark-text">{project.title}</h2>
+                  <span className="text-xs text-gray-500 dark:text-gray-400 whitespace-nowrap">{project.period}</span>
+                </div>
+                <p className="text-gray-600 dark:text-dark-muted mb-4 h-20 overflow-hidden">{project.description}</p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {project.technologies.map((tech, techIndex) => (
+                    <span
+                      key={techIndex}
+                      className="px-3 py-1 bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300 rounded-full text-xs font-medium"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
-            <a
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-red-600 dark:text-red-400 hover:text-red-800 dark:hover:text-red-300 transition-colors"
-            >
-              View Project →
-            </a>
-          </motion.div>
+          </motion.a>
         ))}
+      </div>
+
+      <div className="mt-16">
+        <h2 className="text-2xl font-bold text-black dark:text-dark-text mb-4">Answering Process Flowchart</h2>
+        <div
+          className="mxgraph border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden"
+          data-mxgraph={diagramData}
+          style={{ maxWidth: '100%', height: '600px' }}
+        />
       </div>
     </div>
   );

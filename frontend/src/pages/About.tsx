@@ -11,7 +11,6 @@ const About: React.FC = () => {
     'Data Analysis',
     'Optimization',
     'Combinatorics',
-    'Mathematics',
     'Problem Solving',
   ];
 
@@ -20,11 +19,10 @@ const About: React.FC = () => {
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="text-3xl font-bold text-black dark:text-dark-text mb-8"
+        className="text-3xl font-bold text-black dark:text-dark-text mb-8 text-center"
       >
         About Me
       </motion.h2>
-
       <div className="bg-white dark:bg-dark-secondary p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 transition-colors">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -33,14 +31,24 @@ const About: React.FC = () => {
           className="space-y-6"
         >
           <div>
-            <h3 className="text-xl font-semibold text-black dark:text-dark-text mb-2">Education</h3>
-            <div className="space-y-4">
-              <div>
-                <h4 className="font-medium text-black dark:text-dark-text">University of Waterloo</h4>
-                <p className="text-gray-700 dark:text-dark-muted">Bachelor of Mathematics in Combinatorics and Optimization</p>
-                <p className="text-gray-600 dark:text-dark-muted">2023 - Present</p>
-              </div>
-            </div>
+            <p className="text-gray-700 dark:text-dark-muted mb-4">
+              Hi, I'm Vividh. I like to build software and solve problems, especially my own.
+            </p>
+            {/*
+            <p className="text-gray-700 dark:text-dark-muted mb-4">
+              Here's what I'm currently listening to:
+            </p>
+            <iframe
+              style={{ borderRadius: '12px' }}
+              src="https://open.spotify.com/embed/track/5ihS6WN0LHG3fgk5zVsMsA?utm_source=generator"
+              width="100%"
+              height="152"
+              frameBorder="0"
+              allowFullScreen={true}
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"
+            ></iframe>
+            */}
           </div>
 
           <div>
@@ -60,11 +68,7 @@ const About: React.FC = () => {
           <div>
             <h3 className="text-xl font-semibold text-black dark:text-dark-text mb-2">Interests</h3>
             <p className="text-gray-700 dark:text-dark-muted">
-              I'm passionate about applying mathematical optimization and combinatorial
-              techniques to solve real-world problems. My interests include machine
-              learning, algorithm design, and mathematical modeling. I enjoy working
-              on challenging problems that require both analytical thinking and
-              practical implementation.
+              I like to solve real-world problems. My interests include Full Stack Development and AI Agents.
             </p>
           </div>
         </motion.div>
@@ -73,4 +77,4 @@ const About: React.FC = () => {
   );
 };
 
-export default About; 
+export default About;

@@ -1,11 +1,18 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import About from './About';
+import Experience from './Experience';
+import Projects from './Projects';
+import Contact from './Contact';
+import Education from './Education';
+import Hobbies from './Hobbies';
+import LeadershipCommunity from './LeadershipCommunity';
 
 const Home: React.FC = () => {
   return (
     <div className="space-y-16 pt-16">
       {/* Hero Section */}
-      <section className="text-center py-20">
+      <section id="home" className="text-center py-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -37,34 +44,36 @@ const Home: React.FC = () => {
         </motion.div>
       </section>
 
-      {/* Featured Section */}
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="bg-white dark:bg-dark-secondary p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 transition-colors"
-        >
-          <h2 className="text-2xl font-semibold mb-4 text-black dark:text-dark-text">Latest Projects</h2>
-          <p className="text-gray-700 dark:text-dark-muted">
-            Explore my recent work in AI and machine learning, including my Agentic Personal Assistant and Deep Research Agent projects. I focus on building intelligent systems that solve real-world problems.
-          </p>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="bg-white dark:bg-dark-secondary p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 transition-colors"
-        >
-          <h2 className="text-2xl font-semibold mb-4 text-black dark:text-dark-text">Skills & Expertise</h2>
-          <p className="text-gray-700 dark:text-dark-muted">
-            Proficient in Python, TypeScript, and modern AI frameworks. Experienced in building scalable applications using React, FastAPI, and cloud technologies. Currently pursuing a degree in Combinatorics and Optimization with a minor in Computer Science at the University of Waterloo.
-          </p>
-        </motion.div>
+      <section id="about">
+        <About />
       </section>
+
+      <section id="education">
+        <Education />
+      </section>
+
+      <section id="experience">
+        <Experience />
+      </section>
+
+      <section id="leadership">
+        <LeadershipCommunity />
+      </section>
+
+      <section id="projects">
+        <Projects />
+      </section>
+      
+      <section id="hobbies" className="pb-16">
+        <Hobbies />
+      </section>
+
+      <section id="contact" className="pb-16">
+        <Contact />
+      </section>
+
     </div>
   );
 };
 
-export default Home; 
+export default Home;

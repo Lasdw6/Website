@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion, Variants } from 'framer-motion';
+import Card from '../components/Card';
 
 interface ExperienceItem {
   title: string;
@@ -7,9 +8,23 @@ interface ExperienceItem {
   period: string;
   skills: string[];
   technologies: string[];
+  logo: string;
+  descriptionList?: string[];
 }
 
 const experiences: ExperienceItem[] = [
+  {
+    title: "Software Engineering Intern",
+    company: "Manulife",
+    period: "Aug. 2025 - Present",
+    skills: [
+      "AI Agents",
+      "Large Language Models (LLMs)",
+      "Retrieval-Augmented Generation (RAG)",
+      "Tool Orchestration"],
+    technologies: ["LangChain", "Terraform" ,"OpenAI SDK", "Azure", "Vector Databases", "Python", "TypeScript"],
+    logo: "manulife.svg"
+  },
   {
     title: "Software Engineering Intern",
     company: "GOQii",
@@ -21,20 +36,21 @@ const experiences: ExperienceItem[] = [
       "RAG",
       "Performance Optimization"
     ],
-    technologies: ["Computer Vision", "Deep Learning", "Mobile Development"]
+    technologies: ["Computer Vision", "Deep Learning", "AI Agents", "LangChain", "SQL"],
+    logo: "GOQii.png"
   },
   {
-    title: "Machine Learning Engineer Intern",
+    title: "Machine Learning Engineering Intern",
     company: "The Innovation Story",
     period: "Dec. 2024 - Feb. 2025",
     skills: [
       "Machine Learning",
       "Computer Vision",
       "Model Training",
-      "Performance Optimization",
       "Data Processing"
     ],
-    technologies: ["PyTorch", "YOLOv11", "Graph Algorithms", "Machine Learning"]
+    technologies: ["PyTorch", "YOLOv11", "Graph Algorithms"],
+    logo: "TIS.png"
   },
   {
     title: "Software Engineering Intern",
@@ -42,12 +58,25 @@ const experiences: ExperienceItem[] = [
     period: "Sep. 2024 - Dec. 2024",
     skills: [
       "Full Stack Development",
-      "Data Pipeline Engineering",
       "Cloud Optimization",
       "NLP & LLM Integration",
       "API Development"
     ],
-    technologies: ["Django", "React", "NLP", "Google Cloud", "Web Scraping", "API Integration"]
+    technologies: ["Django", "React", "NLP", "Google Cloud", "Web Scraping", "API Integration"],
+    logo: "electron.jpg"
+  },
+  {
+    title: "Software Engineering Intern",
+    company: "SciTara Technologies",
+    period: "May 2022 - June 2022",
+    skills: [
+      "Device automation",
+      "Data collection optimization",
+      "Excel macro development",
+      "Clinical data processing"
+    ],
+    technologies: ["Python", "NodeJS", "Excel"],
+    logo: "scitara.png"
   }
 ];
 
@@ -83,6 +112,7 @@ const Experience: React.FC = () => {
 
   return (
     <div className="max-w-6xl mx-auto">
+      {/* Experience Cards Section */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -91,7 +121,7 @@ const Experience: React.FC = () => {
       >
         <h1 className="text-3xl font-bold text-black dark:text-dark-text mb-2">Experience</h1>
         <p className="text-lg text-gray-700 dark:text-dark-muted">
-          My professional journey and accomplishments
+          My professional journey and accomplishments 
         </p>
       </motion.div>
 
@@ -149,7 +179,60 @@ const Experience: React.FC = () => {
                 <h3 className="text-lg md:text-xl font-semibold text-black dark:text-dark-text mb-2">
                   {exp.title}
                 </h3>
-                <h4 className="text-base md:text-lg text-red-600 dark:text-red-400 mb-2">{exp.company}</h4>
+                <h4 className="text-base md:text-lg text-red-600 dark:text-red-400 mb-2 flex items-center">
+                  <img src={exp.logo} alt={`${exp.company} Logo`} className="w-6 h-6 mr-2 rounded-full" />
+                  {exp.company === 'GOQii' && (
+                    <Card
+                      name="GOQii"
+                      logo="GOQii.png"
+                      description="GOQii is a global preventive healthcare platform that combines advanced wearable technology, expert coaching, and a holistic ecosystem to help users achieve a healthier lifestyle."
+                      location="Menlo Park, CA, USA"
+                      website="https://www.goqii.com/"
+                      founded="2014"
+                    />
+                  )}
+                  {exp.company === 'The Innovation Story' && (
+                    <Card
+                      name="The Innovation Story"
+                      logo="TIS.png"
+                      description="The Innovation Story is a data-driven innovation company specializing in artificial intelligence, machine learning, and digital transformation solutions for global clients. They help organizations leverage cutting-edge technology to drive business growth and operational excellence."
+                      location="Bangalore, India"
+                      website="https://theinnovationstory.com/"
+                      founded="2018"
+                    />
+                  )}
+                  {exp.company === 'Electron Online' && (
+                    <Card
+                      name="Electron Online"
+                      logo="electron.jpg"
+                      description="A technology startup focused on building scalable web and cloud solutions, integrating modern AI and automation for businesses."
+                      location="Mumbai, India"
+                      website="https://electrongroup.com/"
+                      founded="2022"
+                    />
+                  )}
+                   {exp.company === 'Manulife' && (
+                    <Card
+                      name="Manulife"
+                      logo="image.png"
+                      description="A leading international financial services group. Building secure, compliant AI agent systems for customer and operational use cases."
+                      location="Toronto, Canada"
+                      website="https://www.manulife.com/"
+                      founded="1887"
+                    />
+                  )}
+                   {exp.company === 'SciTara Technologies' && (
+                    <Card
+                      name="SciTara Technologies"
+                      logo="Scitara.png"
+                      description="A scientific software company focused on laboratory automation and data integration for clinical and research environments."
+                      location="Marlborough, MA, USA"
+                      website="https://scitara.com/"
+                      founded="2019"
+                    />
+                  )}
+                  
+                </h4>
                 <p className="text-sm md:text-base text-gray-600 dark:text-dark-muted mb-4">{exp.period}</p>
                 
                 <div className="mb-4">

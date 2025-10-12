@@ -4,11 +4,11 @@ import { DocumentIcon } from '@heroicons/react/24/outline';
 
 const Contact: React.FC = () => {
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="max-w-6xl mx-auto">
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="text-3xl font-bold text-black dark:text-dark-text mb-8"
+        className="text-3xl font-bold text-black dark:text-dark-text mb-8 text-center"
       >
         Contact Me
       </motion.h2>
@@ -17,7 +17,7 @@ const Contact: React.FC = () => {
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.2 }}
-          className="bg-white dark:bg-dark-secondary p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 transition-colors"
+          className="bg-white dark:bg-dark-secondary p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 transition-colors flex flex-col justify-center"
         >
           <h3 className="text-xl font-semibold text-black dark:text-dark-text mb-4">Get in Touch</h3>
           <p className="text-gray-700 dark:text-dark-muted mb-6">
@@ -53,12 +53,12 @@ const Contact: React.FC = () => {
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.4 }}
-          className="bg-white dark:bg-dark-secondary p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 transition-colors"
+          className="bg-white dark:bg-dark-secondary p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 transition-colors flex flex-col justify-center"
         >
           <h3 className="text-xl font-semibold text-black dark:text-dark-text mb-4">Connect</h3>
           <div className="space-y-4">
             <a
-              href="/resume"
+              href="/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center space-x-3 text-gray-700 dark:text-dark-muted hover:text-red-600 dark:hover:text-red-400 transition-colors"

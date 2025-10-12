@@ -1,19 +1,22 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Bars3Icon, XMarkIcon, DocumentIcon } from '@heroicons/react/24/outline';
-import DarkModeToggle from './DarkModeToggle';
 import { Link } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const navItems = [
-    { name: 'Home', href: '/#home' },
-    { name: 'Experience', href: '/#experience' },
-    { name: 'Projects', href: '/#projects' },
-    { name: 'About', href: '/#about' },
-    { name: 'Contact', href: '/#contact' },
-  ];
+  const navItems: { name: string; href: string; }[] = [];
+
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    // Only handle internal hash links
+    if (href.startsWith('#')) {
+      e.preventDefault();
+      document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+      setIsOpen(false);
+    }
+    // Otherwise, let the browser handle it (for /resume.pdf, etc.)
+  };
 
   return (
     <nav className="bg-white dark:bg-dark-primary shadow-md fixed w-full top-0 z-50 border-b border-gray-200 dark:border-gray-700 transition-colors duration-300">
@@ -31,38 +34,26 @@ const Navbar: React.FC = () => {
           {/* Desktop menu */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-              item.href.startsWith('/#') ? (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="text-gray-700 dark:text-dark-text hover:text-red-600 dark:hover:text-red-400 transition-colors duration-200"
-                >
-                  {item.name}
-                </a>
-              ) : (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  className="text-gray-700 dark:text-dark-text hover:text-red-600 dark:hover:text-red-400 transition-colors duration-200"
-                  title={item.name}
-                >
-                  {item.name === 'Resume' ? (
-                    <DocumentIcon className="h-6 w-6" />
-                  ) : (
-                    item.name
-                  )}
-                </Link>
-              )
+              <a
+                key={item.name}
+                href={item.href}
+                onClick={(e) => handleScroll(e, item.href)}
+                className="text-gray-700 dark:text-dark-text hover:text-red-600 dark:hover:text-red-400 transition-colors duration-200"
+              >
+                {item.name}
+              </a>
             ))}
             
             <div className="flex items-center space-x-4">
-              <Link
-                to="/resume"
+              <a
+                href="/resume"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-gray-700 dark:text-dark-text hover:text-red-600 dark:hover:text-red-400 transition-colors duration-200"
                 title="Resume"
               >
                 <DocumentIcon className="h-6 w-6" />
-              </Link>
+              </a>
               <a
                 href="https://github.com/Lasdw6"
                 target="_blank"
@@ -114,13 +105,11 @@ const Navbar: React.FC = () => {
                   onMouseOut={(e) => e.currentTarget.style.filter = 'grayscale(100%)'}
                 />
               </a>
-              <DarkModeToggle />
             </div>
           </div>
 
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center space-x-2">
-            <DarkModeToggle />
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="text-gray-700 dark:text-dark-text hover:text-red-600 dark:hover:text-red-400 focus:outline-none"
@@ -145,37 +134,25 @@ const Navbar: React.FC = () => {
         >
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {navItems.map((item) => (
-              item.href.startsWith('/#') ? (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="block px-3 py-2 text-gray-700 dark:text-dark-text hover:text-red-600 dark:hover:text-red-400 transition-colors duration-200"
-                >
-                  {item.name}
-                </a>
-              ) : (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  className="block px-3 py-2 text-gray-700 dark:text-dark-text hover:text-red-600 dark:hover:text-red-400 transition-colors duration-200"
-                  title={item.name}
-                >
-                  {item.name === 'Resume' ? (
-                    <DocumentIcon className="h-6 w-6" />
-                  ) : (
-                    item.name
-                  )}
-                </Link>
-              )
+              <a
+                key={item.name}
+                href={item.href}
+                onClick={(e) => handleScroll(e, item.href)}
+                className="block px-3 py-2 text-gray-700 dark:text-dark-text hover:text-red-600 dark:hover:text-red-400 transition-colors duration-200"
+              >
+                {item.name}
+              </a>
             ))}
             <div className="flex items-center space-x-4 px-3 py-2">
-              <Link
-                to="/resume"
+              <a
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-gray-700 dark:text-dark-text hover:text-red-600 dark:hover:text-red-400 transition-colors duration-200"
                 title="Resume"
               >
                 <DocumentIcon className="h-6 w-6" />
-              </Link>
+              </a>
               <a
                 href="https://github.com/Lasdw6"
                 target="_blank"
