@@ -67,8 +67,6 @@ const cardVariants: Variants = {
 };
 
 const Projects: React.FC = () => {
-  const diagramData = '{"highlight":"#0000ff","nav":true,"resize":true,"toolbar":"zoom","edit":false,"url":"/flowchart.drawio"}';
-
   return (
     <div className="max-w-7xl mx-auto">
       <motion.div
@@ -119,15 +117,6 @@ const Projects: React.FC = () => {
             </div>
           </motion.a>
         ))}
-      </div>
-
-      <div className="mt-16">
-        <h2 className="text-2xl font-bold text-black dark:text-dark-text mb-4">Answering Process Flowchart</h2>
-        <div
-          className="mxgraph border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden"
-          data-mxgraph={diagramData}
-          style={{ maxWidth: '100%', height: '600px' }}
-        />
       </div>
     </div>
   );
