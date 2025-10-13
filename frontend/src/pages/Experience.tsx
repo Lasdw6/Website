@@ -21,7 +21,7 @@ const experiences: ExperienceItem[] = [
       "AI Agents",
       "Large Language Models (LLMs)",
       "Retrieval-Augmented Generation (RAG)",
-      "Tool Orchestration"],
+      "Azure"],
     technologies: ["LangChain", "Terraform" ,"OpenAI SDK", "Azure", "Vector Databases", "Python", "TypeScript"],
     logo: "manulife.svg"
   },
@@ -30,11 +30,10 @@ const experiences: ExperienceItem[] = [
     company: "GOQii",
     period: "May 2025 - Aug. 2025",
     skills: [
-      "Computer Vision",
-      "Deep Learning",
-      "LLM",
-      "RAG",
-      "Performance Optimization"
+      "AI Agents",
+      "Large Language Models (LLMs)",
+      "Retrieval-Augmented Generation (RAG)",
+      "Tool Orchestration"
     ],
     technologies: ["Computer Vision", "Deep Learning", "AI Agents", "LangChain", "SQL"],
     logo: "GOQii.png"
