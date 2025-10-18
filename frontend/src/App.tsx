@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Resume from './pages/Resume';
+import HireMe from './pages/HireMe';
 import InteractiveBackground from './components/InteractiveBackground';
 import { Routes, Route } from 'react-router-dom';
 
@@ -14,6 +15,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/resume" element={<Resume />} />
+          <Route path="/hireme" element={<HireMe />} />
+          <Route path="/Hireme" element={<HireMe />} />
         </Routes>
       </div>
     </div>

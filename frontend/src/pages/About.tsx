@@ -8,10 +8,7 @@ const About: React.FC = () => {
     'React',
     'Node.js',
     'Machine Learning',
-    'Data Analysis',
     'Optimization',
-    'Combinatorics',
-    'Problem Solving',
   ];
 
   return (
