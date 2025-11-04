@@ -56,7 +56,6 @@ const HireMe: React.FC = () => {
       ? 'fullstack'
       : 'fullstack';
   const path = location.pathname;
-  const lower = path.toLowerCase();
   // Apply path/query triggers only when not in locked redirect state
   if (!hasLock()) {
     if (path === '/Hireme') {
@@ -238,6 +237,14 @@ const HireMe: React.FC = () => {
                     </div>
                   </div>
                 ))}
+              </div>
+              <div className="flex justify-center mt-6">
+                <a
+                  href="/#projects"
+                  className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 transition-all duration-200 shadow-md hover:shadow-lg font-medium text-base"
+                >
+                  View More Projects
+                </a>
               </div>
             </div>
 

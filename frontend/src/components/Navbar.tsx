@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Bars3Icon, XMarkIcon, DocumentIcon } from '@heroicons/react/24/outline';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
 
   const navItems: { name: string; href: string; }[] = [];
 
@@ -45,18 +47,22 @@ const Navbar: React.FC = () => {
             ))}
             
             <div className="flex items-center space-x-4">
-              <a
-                href="/resume"
-                className="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-gradient-to-r from-red-600 to-red-700 text-white hover:from-red-700 hover:to-red-800 transition-all duration-200 shadow-md hover:shadow-lg font-medium text-sm"
-              >
-                View Resume
-              </a>
-              <a
-                href="mailto:vividhmahajan007@gmail.com?subject=Hiring%20Vividh%20Mahajan"
-                className="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-white dark:bg-dark-primary border-2 border-red-600 dark:border-red-400 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-dark-tertiary transition-all duration-200 shadow-md hover:shadow-lg font-medium text-sm"
-              >
-                Email Me
-              </a>
+              {!isHomePage && (
+                <>
+                  <a
+                    href="/resume"
+                    className="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-gradient-to-r from-red-600 to-red-700 text-white hover:from-red-700 hover:to-red-800 transition-all duration-200 shadow-md hover:shadow-lg font-medium text-sm"
+                  >
+                    View Resume
+                  </a>
+                  <a
+                    href="mailto:vividhmahajan@gmail.com?subject=Hiring%20Vividh%20Mahajan"
+                    className="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-white dark:bg-dark-primary border-2 border-red-600 dark:border-red-400 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-dark-tertiary transition-all duration-200 shadow-md hover:shadow-lg font-medium text-sm"
+                  >
+                    Email Me
+                  </a>
+                </>
+              )}
               <a
                 href="/resume"
                 target="_blank"
@@ -156,20 +162,22 @@ const Navbar: React.FC = () => {
               </a>
             ))}
             <div className="px-3 py-2 space-y-3">
-              <div className="flex flex-col space-y-2">
-                <a
-                  href="/resume"
-                  className="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-gradient-to-r from-red-600 to-red-700 text-white hover:from-red-700 hover:to-red-800 transition-all duration-200 shadow-md hover:shadow-lg font-medium text-sm"
-                >
-                  View Resume
-                </a>
-                <a
-                  href="mailto:vividhmahajan007@gmail.com?subject=Hiring%20Vividh%20Mahajan"
-                  className="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-white dark:bg-dark-primary border-2 border-red-600 dark:border-red-400 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-dark-tertiary transition-all duration-200 shadow-md hover:shadow-lg font-medium text-sm"
-                >
-                  Email Me
-                </a>
-              </div>
+              {!isHomePage && (
+                <div className="flex flex-col space-y-2">
+                  <a
+                    href="/resume"
+                    className="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-gradient-to-r from-red-600 to-red-700 text-white hover:from-red-700 hover:to-red-800 transition-all duration-200 shadow-md hover:shadow-lg font-medium text-sm"
+                  >
+                    View Resume
+                  </a>
+                  <a
+                    href="mailto:vividhmahajan@gmail.com?subject=Hiring%20Vividh%20Mahajan"
+                    className="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-white dark:bg-dark-primary border-2 border-red-600 dark:border-red-400 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-dark-tertiary transition-all duration-200 shadow-md hover:shadow-lg font-medium text-sm"
+                  >
+                    Email Me
+                  </a>
+                </div>
+              )}
               <div className="flex items-center space-x-4">
                 <a
                   href="/resume.pdf"
