@@ -213,7 +213,7 @@ const Experience: React.FC = () => {
                    {exp.company === 'Manulife' && (
                     <Card
                       name="Manulife"
-                      logo="image.png"
+                      logo="manulife.svg"
                       description="A leading international financial services group. Building secure, compliant AI agent systems for customer and operational use cases."
                       location="Toronto, Canada"
                       website="https://www.manulife.com/"
