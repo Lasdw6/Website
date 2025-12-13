@@ -13,8 +13,8 @@ export const projects: ProjectItem[] = [
   {
     title: "Agentic Personal Assistant",
     period: "Jan. 2025 - Present",
-    description: "AI-powered personal assistant with RAG, FastAPI, and cloud deployment.",
-    technologies: ["Python", "FastAPI", "Langchain", "Pinecone", "AWS", "Docker", "Git"],
+    description: "AI-powered personal assistant that consumes contextual signals to infer user intent and proactively trigger actions.",
+    technologies: ["Python", "Langchain", "Pinecone", "AWS", "Docker", "Google APIs"],
     github: "https://github.com/Lasdw6",
     image: "image.png"
   },
