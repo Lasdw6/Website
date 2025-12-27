@@ -1,0 +1,100 @@
+import React from 'react';
+import { useParams, Link, Navigate } from 'react-router-dom';
+import { projects } from '../shared/projects';
+
+const ProjectDetail: React.FC = () => {
+  const { projectSlug } = useParams<{ projectSlug: string }>();
+  
+  // Create slug from title: lowercase, replace spaces with hyphens
+  const project = projects.find(p => 
+    p.title.toLowerCase().replace(/\s+/g, '-') === projectSlug
+  );
+
+  if (!project) {
+    return <Navigate to="/projects" replace />;
+  }
+
+  const primaryLink = project.demo || project.liveSite || project.github;
+
+  return (
+    <div className="pt-16 pb-8 flex justify-center">
+      <div className="max-w-2xl w-full px-4 sm:px-6 lg:px-8">
+        <div className="space-y-8">
+          <div className="mb-8">
+            <Link 
+              to="/" 
+              className="text-base text-minimal-grey hover:text-minimal-red transition-colors"
+            >
+              ← Back
+            </Link>
+            <h1 className="text-4xl font-medium text-minimal-grey mt-4 mb-2">
+              {project.title}
+            </h1>
+            <p className="text-sm text-minimal-grey-dark">{project.period}</p>
+          </div>
+
+          <div className="space-y-6">
+            <p className="text-base text-minimal-grey leading-relaxed">
+              {project.description}
+            </p>
+            
+            <div className="space-y-3">
+              <h2 className="text-xl font-medium text-minimal-grey">Technologies</h2>
+              <div className="flex flex-wrap gap-2">
+                {project.technologies.map((tech, techIndex) => (
+                  <span
+                    key={techIndex}
+                    className="text-xs px-2 py-1 bg-minimal-grey-darker text-minimal-grey rounded"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {primaryLink && (
+              <div className="space-y-3">
+                <h2 className="text-xl font-medium text-minimal-grey">Links</h2>
+                <div className="flex flex-wrap gap-4">
+                  {project.liveSite && (
+                    <a
+                      href={project.liveSite}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-base text-minimal-red hover:underline"
+                    >
+                      Live Site →
+                    </a>
+                  )}
+                  {project.github && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-base text-minimal-red hover:underline"
+                    >
+                      GitHub →
+                    </a>
+                  )}
+                  {project.demo && (
+                    <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-base text-minimal-red hover:underline"
+                    >
+                      Demo →
+                    </a>
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ProjectDetail;
+
