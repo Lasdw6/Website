@@ -8,6 +8,7 @@ import GitHub from './pages/GitHub';
 import ProjectsDetail from './pages/ProjectsDetail';
 import ProjectDetail from './pages/ProjectDetail';
 import WorkDetail from './pages/WorkDetail';
+import BlogDetail from './pages/BlogDetail';
 import { Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <Route path="/projects" element={<ProjectsDetail />} />
         <Route path="/projects/:projectSlug" element={<ProjectDetail />} />
         <Route path="/work" element={<WorkDetail />} />
+        <Route path="/writing/:blogSlug" element={<BlogDetail />} />
       </Routes>
     </div>
   );
