@@ -44,20 +44,82 @@ The project is still growing. I'm still adding features, still refining the expe
   {
     title: "How I Found My Way Here",
     slug: "how-i-found-my-way-here",
-    date: "2024-03-10",
-    lastUpdated: "2024-12-08",
-    content: `• Started with an interest in mathematics, drawn to the elegance of proofs and solving complex problems
+    date: "2025-12-28",
+    lastUpdated: "2025-12-28",
+    content: `• Participated in a Google-hosted Scratch game making competition
 
-• Realized pure math wasn't quite what I was looking for—I wanted to build things with immediate impact
+• Tried making games on Roblox and learned a little bit of Lua
 
-• Discovered programming, which combined the logical thinking I loved from math with the ability to create something tangible
+• Learned Java in highschool for core programming concepts
 
-• Chose University of Waterloo for Math and CS—the perfect combination of theoretical foundation and practical application
+• Watched tutorials on Android development using Android Studio
 
-• Worked at several companies, each teaching me something different about what it means to be a software engineer
+• Built an MP3 player app in Kotlin with playback controls and background state
 
-• Learned that the best work happens when solving real problems for real people
+• Interned at Scitara and learned about the basics of software development
 
-• Still finding my way, still learning, still growing—every project and internship brings me closer to understanding what I want to build and why`
+• Built multiple websites for my school's annual events
+
+• Learnt Racket in university for functional programming concepts
+
+• Completed Harvard CS50, a course on computer science fundamentals
+
+• Participated in my first hackathon, nwHacks
+
+• Built ByteBites in 48hours at nwHacks
+
+• Made the first version of my [personal website](/projects/personal-portfolio-website)
+
+• Built [Discoverify](/projects/discoveriffy), a music recommendation project
+
+• Learned C and C++ programming
+
+• Built a [chess project](/projects/chess-game-with-computer-players) with computer players in C++
+
+• Interned at Electron Online, working with web scraping systems and LLMs
+
+• Built the first version of a [Job Application Tracker](/projects/job-application-tracker)
+
+• Interned at The Innovation Story, working on ML and computer vision projects
+
+• Worked with YOLOv11 for the first time
+
+• Started learning about AI agents and orchestration with Langchain and Langgraph
+
+• Began building my [Personal Assistant](/projects/agentic-personal-assistant) project
+
+• Rebuilt the [Job Application Tracker](/projects/job-application-tracker) with a new UI and auth
+
+• Got my first users for the [Job Application Tracker](/projects/job-application-tracker)
+
+• Interned at GOQii, working on RAG system for doctors to search patient data
+
+• Rebuilt the document parsing pipeline for structured retrieval
+
+• Completed the Hugging Face Agents Course
+
+• Built a [Deep Research Agent](/projects/deep-research-agent) tested on the GAIA benchmark
+
+• Participated in a T3 Chat clone-athon and built [TeaTreeChat](/projects/tea-tree-chat)
+
+• Completed the [Deep Learning Specialization](https://coursera.org/share/b722169277c094f23e8acc25495ffdbd) by DeepLearning.AI
+
+• Built a [desktop agent](/projects/desktop-agent) using Tauri capable of controlling the screen
+
+• Built a React Native mobile app for my [Personal Assistant](/projects/agentic-personal-assistant)
+
+• Built a [housing search agent](/projects/housing-search-agent) to help me find a place to live
+
+• Interned at Manulife, building an agentic incident-management system
+
+• Worked with Terraform for the first time
+
+• Joined [UW Tech+ club](https://www.techplusuw.com/) and built internal automation for hiring processes
+
+• Updated [TeaTreeChat](/projects/tea-tree-chat) with new models and features
+
+• Rebuilt my [Personal Assistant](/projects/agentic-personal-assistant) with a proactive, event-driven architecture
+
+• Rebranded and refined my [personal website](/projects/personal-portfolio-website) to reflect current focus`
   }
 ];

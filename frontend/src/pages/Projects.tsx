@@ -11,7 +11,7 @@ const Projects: React.FC = () => {
         </h2>
       </Link>
       <div className="space-y-0.5">
-        {projects.map((project, index) => {
+        {projects.filter(project => !project.hideFromHome).map((project, index) => {
           const projectSlug = project.title.toLowerCase().replace(/\s+/g, '-');
           
           return (

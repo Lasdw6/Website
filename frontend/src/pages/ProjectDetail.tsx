@@ -94,6 +94,34 @@ const ProjectDetail: React.FC = () => {
                 </div>
               </div>
             )}
+
+            {project.relatedProjects && project.relatedProjects.length > 0 && (
+              <div className="space-y-3">
+                <h2 className="text-xl font-medium text-minimal-grey">Related Projects</h2>
+                <div className="space-y-2">
+                  {project.relatedProjects.map((related, index) => (
+                    <div key={index} className="space-y-1">
+                      <div className="flex items-center gap-2">
+                        <span className="text-base text-minimal-grey">{related.title}</span>
+                        {related.github && (
+                          <a
+                            href={related.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-sm text-minimal-red hover:underline"
+                          >
+                            GitHub →
+                          </a>
+                        )}
+                      </div>
+                      {related.description && (
+                        <p className="text-sm text-minimal-grey-dark">{related.description}</p>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>

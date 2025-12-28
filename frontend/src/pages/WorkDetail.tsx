@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 interface ExperienceItem {
   title: string;
@@ -72,6 +72,19 @@ const experiences: ExperienceItem[] = [
 ];
 
 const WorkDetail: React.FC = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const element = document.querySelector(location.hash);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+      }
+    }
+  }, [location.hash]);
+
   return (
     <div className="pt-16 pb-8 flex justify-center">
       <div className="max-w-2xl w-full px-4 sm:px-6 lg:px-8">
@@ -87,8 +100,10 @@ const WorkDetail: React.FC = () => {
           </div>
 
           <div className="space-y-10">
-            {experiences.map((exp, index) => (
-              <div key={index} className="space-y-4">
+            {experiences.map((exp, index) => {
+              const companySlug = exp.company.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+              return (
+              <div key={index} id={companySlug} className="space-y-4 scroll-mt-20">
                 <div className="flex items-center space-x-3">
                   <img 
                     src={exp.logo} 
@@ -163,7 +178,8 @@ const WorkDetail: React.FC = () => {
                   <div className="border-t border-minimal-grey-darker pt-8 mt-8"></div>
                 )}
               </div>
-            ))}
+            );
+            })}
           </div>
         </div>
       </div>

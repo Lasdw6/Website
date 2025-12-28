@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { formatRelativeTime } from '../utils/dateUtils';
 
 interface GitHubProfileCommitProps {
   username: string;
@@ -140,20 +141,6 @@ const GitHubProfileCommit: React.FC<GitHubProfileCommitProps> = ({ username }) =
     return null; // No commits found
   }
 
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    const now = new Date();
-    const diffTime = Math.abs(now.getTime() - date.getTime());
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-    
-    if (diffDays === 0) return 'today';
-    if (diffDays === 1) return '1 day ago';
-    if (diffDays < 7) return `${diffDays} days ago`;
-    if (diffDays < 30) return `${Math.floor(diffDays / 7)} weeks ago`;
-    if (diffDays < 365) return `${Math.floor(diffDays / 30)} months ago`;
-    return `${Math.floor(diffDays / 365)} years ago`;
-  };
-
   return (
     <div>
       <h2 className="text-xl font-medium text-minimal-grey mb-0.5">Recent commits</h2>
@@ -173,7 +160,7 @@ const GitHubProfileCommit: React.FC<GitHubProfileCommitProps> = ({ username }) =
                 {commitMessage}
               </div>
               <div className="text-xs text-minimal-grey-dark leading-tight -mt-0.5">
-                {commit.repo} · {formatDate(commit.date)}
+                {commit.repo} · {formatRelativeTime(commit.date)}
               </div>
             </a>
           );
