@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { projects } from '../shared/projects';
+import GitHubCommit from '../components/GitHubCommit';
 
 const ProjectDetail: React.FC = () => {
   const { projectSlug } = useParams<{ projectSlug: string }>();
@@ -51,6 +52,10 @@ const ProjectDetail: React.FC = () => {
                 ))}
               </div>
             </div>
+
+            {project.github && /github\.com\/[^\/]+\/[^\/]+/.test(project.github) && (
+              <GitHubCommit githubUrl={project.github} />
+            )}
 
             {primaryLink && (
               <div className="space-y-3">

@@ -56,38 +56,29 @@ const experiences: ExperienceItem[] = [
 const Experience: React.FC = () => {
   return (
     <div>
-      <Link to="/work" className="block mb-3">
-        <h2 className="text-2xl font-medium text-minimal-grey hover:text-minimal-red transition-colors cursor-pointer">
-          Experience →
+      <Link to="/work" className="block mb-1">
+        <h2 className="text-xl font-medium text-minimal-grey hover:text-minimal-red transition-colors cursor-pointer">
+          Experience
         </h2>
       </Link>
-      <div className="space-y-1.5">
+      <div className="space-y-0.5">
         {experiences.map((exp, index) => (
-          <div key={index} className="flex space-x-2">
-            <div className="w-9 flex items-start justify-center flex-shrink-0 pt-0.5">
-              <img 
-                src={exp.logo} 
-                alt={`${exp.company} Logo`} 
-                className="w-7 h-7 object-contain"
-              />
-            </div>
+          <div 
+            key={index} 
+            className="flex items-start space-x-2 px-2 py-0 rounded hover:bg-minimal-grey-darker/20 transition-colors cursor-pointer"
+            onClick={() => exp.website && window.open(exp.website, '_blank')}
+          >
+            <img 
+              src={exp.logo} 
+              alt={`${exp.company} Logo`} 
+              className="w-8 h-8 object-contain mt-0.5 flex-shrink-0"
+            />
             <div className="flex-1">
-              <div className="text-base text-minimal-grey">
-                {exp.website ? (
-                  <a
-                    href={exp.website}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-minimal-red hover:text-minimal-red transition-colors"
-                  >
-                    {exp.company}
-                  </a>
-                ) : (
-                  <span className="text-minimal-red">{exp.company}</span>
-                )}
-              </div>
-              <div className="text-base text-minimal-grey">
+              <div className="text-base text-minimal-grey leading-tight">
                 {exp.title}
+              </div>
+              <div className="text-xs text-minimal-grey-dark leading-tight -mt-0.5">
+                {exp.company}
               </div>
             </div>
           </div>

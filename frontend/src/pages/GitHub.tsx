@@ -1,37 +1,30 @@
 import React, { useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const GitHub: React.FC = () => {
   useEffect(() => {
     // Redirect to GitHub profile after a short delay
     const timer = setTimeout(() => {
       window.location.href = 'https://github.com/Lasdw6';
-    }, 1500);
+    }, 1000);
 
     return () => clearTimeout(timer);
   }, []);
 
-  const sectionVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } }
-  };
-
   return (
-    <div className="min-h-screen bg-white dark:bg-dark-primary transition-colors duration-300">
-      <motion.div
-        className="container mx-auto px-4 py-20 text-center"
-        initial="hidden"
-        animate="visible"
-        variants={sectionVariants}
-      >
-        <motion.div
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ delay: 0.2, type: 'spring', stiffness: 200 }}
-          className="mb-8"
-        >
+    <div className="pt-16 pb-8 flex justify-center">
+      <div className="max-w-lg w-full px-4 sm:px-6 lg:px-8">
+        <div className="mb-4">
+          <Link 
+            to="/" 
+            className="text-base text-minimal-grey hover:text-minimal-red transition-colors"
+          >
+            ← Back
+          </Link>
+        </div>
+        <div className="text-center space-y-4">
           <svg
-            className="h-24 w-24 mx-auto text-black dark:text-dark-text"
+            className="h-16 w-16 mx-auto text-minimal-grey"
             fill="currentColor"
             viewBox="0 0 24 24"
             aria-hidden="true"
@@ -42,20 +35,17 @@ const GitHub: React.FC = () => {
               clipRule="evenodd"
             />
           </svg>
-        </motion.div>
-        <h2 className="text-3xl font-bold text-black dark:text-dark-text mb-4">
-          Redirecting to GitHub...
-        </h2>
-        <p className="text-lg text-gray-700 dark:text-dark-muted mb-6">
-          You'll be redirected to my GitHub profile shortly.
-        </p>
-        <a
-          href="https://github.com/Lasdw6"
-          className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-black dark:bg-gray-800 text-white hover:bg-gray-800 dark:hover:bg-gray-700 transition-all duration-200 shadow-md hover:shadow-lg font-medium"
-        >
-          Go to GitHub Profile
-        </a>
-      </motion.div>
+          <h2 className="text-xl font-medium text-minimal-grey">
+            Redirecting to GitHub...
+          </h2>
+          <a
+            href="https://github.com/Lasdw6"
+            className="inline-block text-base text-minimal-red hover:text-minimal-red-light transition-colors"
+          >
+            Go to GitHub Profile →
+          </a>
+        </div>
+      </div>
     </div>
   );
 };

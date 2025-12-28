@@ -13,8 +13,8 @@ const Blog: React.FC = () => {
   if (blogPosts.length === 0) {
     return (
       <div>
-        <h2 className="text-2xl font-medium text-minimal-grey mb-3">Blog</h2>
-        <div className="space-y-1.5">
+        <h2 className="text-xl font-medium text-minimal-grey mb-0.5">Writing</h2>
+        <div className="space-y-0.5">
           {/* Blog posts will appear here */}
         </div>
       </div>
@@ -23,8 +23,8 @@ const Blog: React.FC = () => {
 
   return (
     <div>
-      <h2 className="text-2xl font-medium text-minimal-grey mb-3">Blog</h2>
-      <div className="space-y-1.5 flex flex-col items-center">
+      <h2 className="text-xl font-medium text-minimal-grey mb-0.5">Writing</h2>
+      <div className="space-y-0.5">
         {blogPosts.map((post, index) => (
           <div key={index}>
             {post.link ? (
@@ -32,12 +32,18 @@ const Blog: React.FC = () => {
                 href={post.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-base text-minimal-grey hover:text-minimal-red transition-colors"
+                className="block px-2 py-0 rounded hover:bg-minimal-grey-darker/20 transition-colors"
               >
-                {post.title}
+                <div className="text-base text-minimal-grey">
+                  {post.title}
+                </div>
               </a>
             ) : (
-              <span className="text-base text-minimal-grey">{post.title}</span>
+              <div className="px-2 py-0 rounded hover:bg-minimal-grey-darker/20 transition-colors">
+                <div className="text-base text-minimal-grey">
+                  {post.title}
+                </div>
+              </div>
             )}
           </div>
         ))}
