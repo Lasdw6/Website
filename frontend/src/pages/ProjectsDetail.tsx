@@ -34,19 +34,8 @@ const ProjectsDetail: React.FC = () => {
                   </div>
                   
                   <p className="text-base text-minimal-grey leading-normal">
-                    {project.description}
+                    {project.shortDescription || project.description}
                   </p>
-                  
-                  <div className="flex flex-wrap gap-2">
-                    {project.technologies.map((tech, techIndex) => (
-                      <span
-                        key={techIndex}
-                        className="text-xs px-2 py-1 bg-minimal-grey-darker text-minimal-grey rounded"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
 
                   {index < projects.length - 1 && (
                     <div className="border-t border-minimal-grey-darker pt-4 mt-4"></div>

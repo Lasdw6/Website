@@ -171,6 +171,9 @@ const BlogDetail: React.FC = () => {
               <span>·</span>
               <span>{readTime} min read</span>
             </div>
+            {post.slug === 'how-i-found-my-way-here' && (
+              <p className="text-sm text-minimal-grey-dark mt-2">How i learned to code in chronological order</p>
+            )}
           </div>
 
           <div>

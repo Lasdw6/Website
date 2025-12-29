@@ -29,3 +29,4 @@ export const formatRelativeTime = (dateString: string): string => {
   const years = Math.floor(diffDays / 365);
   return `${years} ${years === 1 ? 'year' : 'years'} ago`;
 };
+
