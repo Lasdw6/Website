@@ -34,14 +34,22 @@ const GitHubProfileCommit: React.FC<GitHubProfileCommitProps> = ({ username }) =
     })
       .then(response => {
         if (!response.ok) {
+          // Handle rate limit gracefully - just hide the component
           if (response.status === 403) {
-            console.warn('GitHub API rate limit exceeded');
+            setLoading(false);
+            setError(true);
+            return null;
           }
           throw new Error('Failed to fetch events');
         }
         return response.json();
       })
       .then((events: any[]) => {
+        // If rate limited, events will be null
+        if (!events) {
+          return;
+        }
+        
         const eventsCommits: Commit[] = [];
         
         for (const event of events) {
@@ -67,67 +75,82 @@ const GitHubProfileCommit: React.FC<GitHubProfileCommitProps> = ({ username }) =
         if (sorted.length >= 3) {
           setCommits(sorted.slice(0, 3));
           setLoading(false);
+        } else if (sorted.length > 0) {
+          // If we have some commits, show them
+          setCommits(sorted.slice(0, sorted.length));
+          setLoading(false);
         } else {
-          // If not enough from events, fetch from repos (limit to 5 repos to avoid rate limit)
-          fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=5`, {
+          // No commits from events, try repos (but be careful about rate limits)
+          fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=3`, {
             headers
           })
-            .then(response => response.ok ? response.json() : null)
+            .then(response => {
+              if (!response.ok) {
+                // If rate limited or error, just hide component
+                setLoading(false);
+                setError(true);
+                return null;
+              }
+              return response.json();
+            })
             .then((repos: any[]) => {
               if (!repos || repos.length === 0) {
-                setCommits(sorted.slice(0, sorted.length));
                 setLoading(false);
+                setError(true);
                 return;
               }
               
-              // Get latest commit from each repo
+              // Get latest commit from each repo (only 3 repos to minimize requests)
               const commitPromises = repos.map(repo => 
                 fetch(`https://api.github.com/repos/${repo.full_name}/commits?per_page=1`, {
                   headers
                 })
-                  .then(res => res.ok ? res.json() : null)
+                  .then(res => {
+                    if (!res.ok) {
+                      return null;
+                    }
+                    return res.json();
+                  })
                   .catch(() => null)
               );
               
               Promise.all(commitPromises).then((commitArrays: any[]) => {
-                const allCommits: Commit[] = [...sorted];
+                const allCommits: Commit[] = [];
                 
                 commitArrays.forEach((commits, index) => {
                   if (commits && commits.length > 0) {
                     const commitData = commits[0];
-                    // Check for duplicates
-                    if (!allCommits.some(c => c.sha === commitData.sha)) {
-                      allCommits.push({
-                        message: commitData.commit.message,
-                        sha: commitData.sha,
-                        url: commitData.html_url,
-                        repo: repos[index].full_name,
-                        date: commitData.commit.author.date
-                      });
-                    }
+                    allCommits.push({
+                      message: commitData.commit.message,
+                      sha: commitData.sha,
+                      url: commitData.html_url,
+                      repo: repos[index].full_name,
+                      date: commitData.commit.author.date
+                    });
                   }
                 });
                 
-                // Sort all and take top 3
-                const finalSorted = allCommits.sort((a, b) => 
-                  new Date(b.date).getTime() - new Date(a.date).getTime()
-                );
-                
-                setCommits(finalSorted.slice(0, 3));
+                if (allCommits.length > 0) {
+                  // Sort and take top 3
+                  const finalSorted = allCommits.sort((a, b) => 
+                    new Date(b.date).getTime() - new Date(a.date).getTime()
+                  );
+                  setCommits(finalSorted.slice(0, 3));
+                }
                 setLoading(false);
               }).catch(() => {
-                setCommits(sorted.slice(0, sorted.length));
                 setLoading(false);
+                setError(true);
               });
             })
             .catch(() => {
-              setCommits(sorted.slice(0, sorted.length));
               setLoading(false);
+              setError(true);
             });
         }
       })
       .catch((err) => {
-        console.error('Error fetching GitHub commits:', err);
+        // Silently handle errors - just hide the component
         setError(true);
         setLoading(false);
       });
