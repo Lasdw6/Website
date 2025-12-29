@@ -19,6 +19,25 @@ const GitHubProfileCommit: React.FC<GitHubProfileCommitProps> = ({ username }) =
   const [error, setError] = useState(false);
 
   useEffect(() => {
+    // Check cache first
+    const cacheKey = `github_commits_${username}`;
+    const cached = localStorage.getItem(cacheKey);
+    if (cached) {
+      try {
+        const { data, timestamp } = JSON.parse(cached);
+        const cacheAge = Date.now() - timestamp;
+        const CACHE_DURATION = 60 * 60 * 1000; // 1 hour
+        
+        if (cacheAge < CACHE_DURATION && data && data.length > 0) {
+          setCommits(data);
+          setLoading(false);
+          return;
+        }
+      } catch (e) {
+        // Invalid cache, continue to fetch
+      }
+    }
+    
     const token = process.env.REACT_APP_GITHUB_TOKEN;
     const headers: HeadersInit = {
       'Accept': 'application/vnd.github.v3+json',
@@ -28,13 +47,40 @@ const GitHubProfileCommit: React.FC<GitHubProfileCommitProps> = ({ username }) =
       headers['Authorization'] = `token ${token}`;
     }
     
+    // Try authenticated endpoint first if token exists, fallback to public
+    const tryAuthenticated = token ? true : false;
+    const eventsUrl = tryAuthenticated
+      ? `https://api.github.com/user/events?per_page=30`
+      : `https://api.github.com/users/${username}/events/public?per_page=30`;
+    
     // Simple approach: fetch events first, then repos if needed
-    fetch(`https://api.github.com/users/${username}/events/public?per_page=30`, {
-      headers
+    fetch(eventsUrl, {
+      headers,
+      mode: 'cors'
     })
       .then(response => {
         if (!response.ok) {
-          // Handle rate limit gracefully - just hide the component
+          // If authenticated endpoint fails (404/401), try public endpoint
+          if (tryAuthenticated && (response.status === 404 || response.status === 401)) {
+            // Fallback to public endpoint
+            return fetch(`https://api.github.com/users/${username}/events/public?per_page=30`, {
+              headers: {
+                'Accept': 'application/vnd.github.v3+json',
+              },
+              mode: 'cors'
+            }).then(res => {
+              if (!res.ok) {
+                if (res.status === 403) {
+                  setLoading(false);
+                  setError(true);
+                  return null;
+                }
+                throw new Error('Failed to fetch events');
+              }
+              return res.json();
+            });
+          }
+          // Handle rate limit gracefully
           if (response.status === 403) {
             setLoading(false);
             setError(true);
@@ -73,53 +119,87 @@ const GitHubProfileCommit: React.FC<GitHubProfileCommitProps> = ({ username }) =
         );
         
         if (sorted.length >= 3) {
-          setCommits(sorted.slice(0, 3));
+          const finalCommits = sorted.slice(0, 3);
+          setCommits(finalCommits);
+          // Cache the results
+          localStorage.setItem(cacheKey, JSON.stringify({
+            data: finalCommits,
+            timestamp: Date.now()
+          }));
           setLoading(false);
+          return;
         } else if (sorted.length > 0) {
-          // If we have some commits, show them
+          // If we have some commits, show them but also try to get more from repos
           setCommits(sorted.slice(0, sorted.length));
           setLoading(false);
-        } else {
-          // No commits from events, try repos (but be careful about rate limits)
-          fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=3`, {
-            headers
+          // Continue to fetch from repos to potentially get more commits
+        }
+        
+        // No commits from events or need more, try repos (including private if token exists)
+        const tryAuthRepos = token ? true : false;
+        const reposUrl = tryAuthRepos
+          ? `https://api.github.com/user/repos?sort=updated&per_page=10&affiliation=owner`
+          : `https://api.github.com/users/${username}/repos?sort=updated&per_page=10`;
+        
+        return fetch(reposUrl, {
+          headers,
+          mode: 'cors'
+        })
+          .then(response => {
+            if (!response.ok) {
+              // If authenticated endpoint fails, try public
+              if (tryAuthRepos && (response.status === 404 || response.status === 401)) {
+                return fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=10`, {
+                  headers: {
+                    'Accept': 'application/vnd.github.v3+json',
+                  },
+                  mode: 'cors'
+                }).then(res => {
+                  if (!res.ok) {
+                    setLoading(false);
+                    setError(true);
+                    return null;
+                  }
+                  return res.json();
+                });
+              }
+              // If rate limited or error, just hide component
+              setLoading(false);
+              setError(true);
+              return null;
+            }
+            return response.json();
           })
-            .then(response => {
-              if (!response.ok) {
-                // If rate limited or error, just hide component
-                setLoading(false);
-                setError(true);
-                return null;
-              }
-              return response.json();
-            })
-            .then((repos: any[]) => {
-              if (!repos || repos.length === 0) {
-                setLoading(false);
-                setError(true);
-                return;
-              }
-              
-              // Get latest commit from each repo (only 3 repos to minimize requests)
-              const commitPromises = repos.map(repo => 
-                fetch(`https://api.github.com/repos/${repo.full_name}/commits?per_page=1`, {
-                  headers
+          .then((repos: any[]) => {
+            if (!repos || repos.length === 0) {
+              setLoading(false);
+              setError(true);
+              return;
+            }
+            
+            // Get latest commit from each repo (fetch from more repos to get better results)
+            const commitPromises = repos.slice(0, 10).map(repo => 
+              fetch(`https://api.github.com/repos/${repo.full_name}/commits?per_page=1`, {
+                headers,
+                mode: 'cors'
+              })
+                .then(res => {
+                  if (!res.ok) {
+                    return null;
+                  }
+                  return res.json();
                 })
-                  .then(res => {
-                    if (!res.ok) {
-                      return null;
-                    }
-                    return res.json();
-                  })
-                  .catch(() => null)
-              );
+                .catch(() => null)
+            );
+            
+            Promise.all(commitPromises).then((commitArrays: any[]) => {
+              const allCommits: Commit[] = sorted.length > 0 ? [...sorted] : [];
               
-              Promise.all(commitPromises).then((commitArrays: any[]) => {
-                const allCommits: Commit[] = [];
-                
-                commitArrays.forEach((commits, index) => {
-                  if (commits && commits.length > 0) {
-                    const commitData = commits[0];
+              commitArrays.forEach((commits, index) => {
+                if (commits && commits.length > 0) {
+                  const commitData = commits[0];
+                  // Check for duplicates
+                  if (!allCommits.some(c => c.sha === commitData.sha)) {
                     allCommits.push({
                       message: commitData.commit.message,
                       sha: commitData.sha,
@@ -128,26 +208,32 @@ const GitHubProfileCommit: React.FC<GitHubProfileCommitProps> = ({ username }) =
                       date: commitData.commit.author.date
                     });
                   }
-                });
-                
-                if (allCommits.length > 0) {
-                  // Sort and take top 3
-                  const finalSorted = allCommits.sort((a, b) => 
-                    new Date(b.date).getTime() - new Date(a.date).getTime()
-                  );
-                  setCommits(finalSorted.slice(0, 3));
                 }
-                setLoading(false);
-              }).catch(() => {
-                setLoading(false);
-                setError(true);
               });
-            })
-            .catch(() => {
+              
+              if (allCommits.length > 0) {
+                // Sort and take top 3
+                const finalSorted = allCommits.sort((a, b) => 
+                  new Date(b.date).getTime() - new Date(a.date).getTime()
+                );
+                const finalCommits = finalSorted.slice(0, 3);
+                setCommits(finalCommits);
+                // Cache the results
+                localStorage.setItem(cacheKey, JSON.stringify({
+                  data: finalCommits,
+                  timestamp: Date.now()
+                }));
+              }
+              setLoading(false);
+            }).catch(() => {
               setLoading(false);
               setError(true);
             });
-        }
+          })
+          .catch(() => {
+            setLoading(false);
+            setError(true);
+          });
       })
       .catch((err) => {
         // Silently handle errors - just hide the component

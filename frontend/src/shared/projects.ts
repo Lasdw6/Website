@@ -6,6 +6,7 @@ export interface ProjectItem {
   period: string;
   image: string;
   github?: string;
+  commitRepo?: string;
   demo?: string;
   liveSite?: string;
   relatedProjects?: { title: string; github?: string; description?: string }[];
@@ -20,6 +21,7 @@ export const projects: ProjectItem[] = [
     description: "Multi-agentic system (APRIL) using MCP servers for email and calendar management. Features distributed architecture with FastAPI, Redis, Celery, and specialized agents. Implements role-based safety model separating read/write operations, RAG for document retrieval, and real-time status streaming via SSE.",
     technologies: ["Python", "FastAPI", "Langchain", "Redis", "Celery", "MCP", "Pinecone", "Docker"],
     github: "https://github.com/Lasdw6/agentic-personal-assistant",
+    commitRepo: "https://github.com/Lasdw6/Assistant",
     image: "image.png",
     relatedProjects: [
       {

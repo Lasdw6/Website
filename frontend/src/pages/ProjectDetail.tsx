@@ -53,8 +53,8 @@ const ProjectDetail: React.FC = () => {
               </div>
             </div>
 
-            {project.github && /github\.com\/[^\/]+\/[^\/]+/.test(project.github) && (
-              <GitHubCommit githubUrl={project.github} />
+            {(project.commitRepo || project.github) && /github\.com\/[^\/]+\/[^\/]+/.test(project.commitRepo || project.github || '') && (
+              <GitHubCommit githubUrl={project.commitRepo || project.github || ''} />
             )}
 
             {primaryLink && (

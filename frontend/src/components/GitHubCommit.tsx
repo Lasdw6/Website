@@ -43,6 +43,25 @@ const GitHubCommit: React.FC<GitHubCommitProps> = ({ githubUrl }) => {
       return;
     }
     
+    // Check cache first
+    const cacheKey = `github_commit_${owner}_${repo}`;
+    const cached = localStorage.getItem(cacheKey);
+    if (cached) {
+      try {
+        const { data, timestamp } = JSON.parse(cached);
+        const cacheAge = Date.now() - timestamp;
+        const CACHE_DURATION = 60 * 60 * 1000; // 1 hour
+        
+        if (cacheAge < CACHE_DURATION && data) {
+          setCommit(data);
+          setLoading(false);
+          return;
+        }
+      } catch (e) {
+        // Invalid cache, continue to fetch
+      }
+    }
+    
     // Optional: Add GitHub token from environment variable for higher rate limits
     // Create .env file with: REACT_APP_GITHUB_TOKEN=your_token_here
     const token = process.env.REACT_APP_GITHUB_TOKEN;
@@ -56,21 +75,34 @@ const GitHubCommit: React.FC<GitHubCommitProps> = ({ githubUrl }) => {
     
     // Fetch latest commit
     fetch(`https://api.github.com/repos/${owner}/${repo}/commits?per_page=1`, {
-      headers
+      headers,
+      mode: 'cors'
     })
       .then(response => {
         if (!response.ok) {
-          // Handle rate limiting
+          // Handle rate limiting and errors gracefully
           if (response.status === 403) {
             console.warn('GitHub API rate limit exceeded');
+          }
+          if (response.status === 404) {
+            // Repo might be private or not exist
+            setError(true);
+            setLoading(false);
+            return null;
           }
           throw new Error('Failed to fetch');
         }
         return response.json();
       })
-      .then((data: CommitData[]) => {
+      .then((data: CommitData[] | null) => {
         if (data && data.length > 0) {
-          setCommit(data[0]);
+          const commitData = data[0];
+          setCommit(commitData);
+          // Cache the result
+          localStorage.setItem(cacheKey, JSON.stringify({
+            data: commitData,
+            timestamp: Date.now()
+          }));
         }
         setLoading(false);
       })
