@@ -9,6 +9,7 @@
     "@types/react-dom": "^18.2.0",
     "@types/three": "^0.178.1",
     "framer-motion": "^10.16.0",
+    "mermaid": "^11.12.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-google-recaptcha": "^3.1.0",

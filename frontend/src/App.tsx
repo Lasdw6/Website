@@ -14,19 +14,19 @@ import { Routes, Route } from 'react-router-dom';
 function App() {
   return (
     <div className="bg-minimal-black min-h-screen">
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/resume" element={<Resume />} />
-        <Route path="/hireme" element={<HireMe />} />
-        <Route path="/Hireme" element={<HireMe />} />
-        <Route path="/linkedin" element={<LinkedIn />} />
-        <Route path="/github" element={<GitHub />} />
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/resume" element={<Resume />} />
+          <Route path="/hireme" element={<HireMe />} />
+          <Route path="/Hireme" element={<HireMe />} />
+          <Route path="/linkedin" element={<LinkedIn />} />
+          <Route path="/github" element={<GitHub />} />
         <Route path="/projects" element={<ProjectsDetail />} />
         <Route path="/projects/:projectSlug" element={<ProjectDetail />} />
         <Route path="/work" element={<WorkDetail />} />
         <Route path="/writing/:blogSlug" element={<BlogDetail />} />
-      </Routes>
+        </Routes>
     </div>
   );
 }

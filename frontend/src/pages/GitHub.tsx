@@ -36,14 +36,14 @@ const GitHub: React.FC = () => {
             />
           </svg>
           <h2 className="text-xl font-medium text-minimal-grey">
-            Redirecting to GitHub...
-          </h2>
-          <a
-            href="https://github.com/Lasdw6"
+          Redirecting to GitHub...
+        </h2>
+        <a
+          href="https://github.com/Lasdw6"
             className="inline-block text-base text-minimal-red hover:text-minimal-red-light transition-colors"
-          >
+        >
             Go to GitHub Profile →
-          </a>
+        </a>
         </div>
       </div>
     </div>

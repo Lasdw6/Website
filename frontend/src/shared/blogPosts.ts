@@ -4,46 +4,14 @@ export interface BlogPost {
   date: string;
   lastUpdated?: string;
   content: string;
+  mermaidDiagram?: string; // Key to reference a diagram from mermaidDiagrams.ts
+  mermaidDiagrams?: Array<{ key: string; insertAfter: string }>; // Multiple diagrams with insertion points
 }
 
 export const blogPosts: BlogPost[] = [
   {
-    title: "Why I Code (and What I Avoid Building)",
-    slug: "why-i-code-and-what-i-avoid-building",
-    date: "2024-01-15",
-    lastUpdated: "2024-12-10",
-    content: `I've been coding for several years now, and I've learned that not every problem needs a technical solution. Some of the best code I've written is the code I didn't write at all.
-
-When I first started programming, I wanted to build everything. Every idea seemed like a potential project. But over time, I've developed a clearer sense of what's worth building and what isn't.
-
-The projects that excite me most are the ones that solve real problems I face daily. They're the tools that make my workflow smoother, the scripts that automate repetitive tasks, and the applications that genuinely improve how I work or learn.
-
-I avoid building things just because I can. I avoid building things that already exist and work well. I avoid building things that don't solve a problem I actually have.
-
-This approach has led me to focus on AI agents and automation tools—things that genuinely make a difference in how I approach problems. It's not about the technology for its own sake; it's about what the technology enables.
-
-The best code is often the simplest code that solves the problem. And sometimes, the best solution is recognizing that code isn't the solution at all.`
-  },
-  {
-    title: "My Favorite Project (and Why It Kept Growing)",
-    slug: "my-favorite-project-and-why-it-kept-growing",
-    date: "2024-02-20",
-    lastUpdated: "2024-12-05",
-    content: `Every developer has that one project—the one that started small but kept growing, the one that taught you more than you expected, the one you're still excited about months later.
-
-For me, that project is my personal assistant agent. It started as a simple script to help me manage my daily tasks, but it's evolved into something much more comprehensive.
-
-What began as a basic task organizer has grown to include email management, calendar integration, research capabilities, and even some light automation for my development workflow. Each new feature came from a real need I encountered while using it.
-
-The project kept growing because I kept using it. Every time I thought "I wish this could do X," I had the opportunity to build that feature. It became a living project, constantly evolving based on my actual usage patterns.
-
-This taught me something important about software development: the best projects are the ones you actually use. When you're your own user, you have immediate feedback on what works and what doesn't. You understand the pain points because you experience them yourself.
-
-The project is still growing. I'm still adding features, still refining the experience, still learning from how I use it. And that's what makes it my favorite—it's not finished, and that's okay. It's a tool that grows with me.`
-  },
-  {
-    title: "How I Found My Way Here",
-    slug: "how-i-found-my-way-here",
+    title: "How I learned to code by building",
+    slug: "how-i-learned-to-code-by-building",
     date: "2025-12-28",
     lastUpdated: "2025-12-28",
     content: `• Participated in a Google-hosted Scratch game making competition
@@ -121,5 +89,53 @@ The project is still growing. I'm still adding features, still refining the expe
 • Rebuilt my [Personal Assistant](/projects/agentic-personal-assistant) with a proactive, event-driven architecture
 
 • Rebranded and refined my [personal website](/projects/personal-portfolio-website) to reflect current focus`
+  },
+  {
+    title: "Why I Code (and What I Avoid Building)",
+    slug: "why-i-code-and-what-i-avoid-building",
+    date: "2024-01-15",
+    lastUpdated: "2024-12-10",
+    content: `I've been coding for several years now, and I've learned that not every problem needs a technical solution. Some of the best code I've written is the code I didn't write at all.
+
+When I first started programming, I wanted to build everything. Every idea seemed like a potential project. But over time, I've developed a clearer sense of what's worth building and what isn't.
+
+The projects that excite me most are the ones that solve real problems I face daily. They're the tools that make my workflow smoother, the scripts that automate repetitive tasks, and the applications that genuinely improve how I work or learn.
+
+I avoid building things just because I can. I avoid building things that already exist and work well. I avoid building things that don't solve a problem I actually have.
+
+This approach has led me to focus on AI agents and automation tools—things that genuinely make a difference in how I approach problems. It's not about the technology for its own sake; it's about what the technology enables.
+
+The best code is often the simplest code that solves the problem. And sometimes, the best solution is recognizing that code isn't the solution at all.`
+  },
+  {
+    title: "My Favorite Project",
+    slug: "my-favorite-project",
+    date: "2024-02-20",
+    lastUpdated: "2024-12-05",
+    mermaidDiagrams: [
+      { key: 'evaluator-optimizer-workflow', insertAfter: 'evaluator-optmizer workflow' },
+      { key: 'assistant-architecture-2', insertAfter: 'rearchitected' }
+    ],
+    content: `My favorite project is the [Personal Assistant](/projects/agentic-personal-assistant) I built and actively use.
+
+It started as a small automation script to handle email-related tasks I didn't want to think about, forwarding emails to my parents, keeping track of spending, and managing small bits of information I would otherwise ignore. It wasn't meant to become anything serious. It was simply solve an inconvinience of mine.
+
+That usefulness is what kept pulling me back.
+
+What began as a script quickly turned into a system. I started integrating additional tools like better web search, document ingestion and retrieval, and structured storage to expand the capabilities of the system. Each new capability like google drive and calendar access made the agent be spread thinner across multiple areas.
+
+To manage this growing complexity of the agent, I began exploring different agentic architectures. I experimented with single-agent designs and settled on the evaluator-optmizer workflow for the system, along with adding retrieval-augmented generation and both short-term and long-term memory. This shifted the assistant from something reactive into something that could accumulate context over time.
+
+To make the assistant accessible outside my machine, I hosted it on a virtual machine on AWS and built a mobile interface using React Native and Expo. That decision added an entirely new world of possibilities to build out the assistant. 
+
+After using this version for a while, it became clear what was still missing. The assistant was capable, but it was still reactive. I had to ask for help explicitly to get value out of it. If it was going to feel like a real personal assistant, it needed a degree of independence.
+
+So, I rearchitected the agent to have a more independent behaviour. The assistant now gets signals like my location (from the mobile app), calendar, and inbox, and infers actions and give suggestions based on changing context rather than explicit instructions. Sub-agents monitor different domains of context and coordinate through shared state rather than direct instructions
+
+For example, the assistant can see my calendar and know that I was planning to go to the gym right now, but my location shows me still at my house, it would then propose a reschedule for the gym session, and adjust the other events in my calendar accordingly.
+
+This project isn't finished, and it probably never will be. It has been the biggest project I have undertaken till date and has been the most rewarding project for me, in terms of building skill and actual day-to-day impact.
+
+That's why this is my favourite project.`
   }
 ];

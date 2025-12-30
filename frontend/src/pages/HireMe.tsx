@@ -151,17 +151,17 @@ const HireMe: React.FC = () => {
           >
             ← Back
           </Link>
-        </div>
+              </div>
         
         <div className="space-y-6">
           <div>
             <h1 className="text-4xl font-medium text-minimal-grey mb-2">
-              Hello Potential Employer
-            </h1>
+                Hello Potential Employer
+              </h1>
             <p className="text-base text-minimal-grey leading-relaxed">
-              {copy.pitch}
-            </p>
-          </div>
+                {copy.pitch}
+              </p>
+            </div>
 
           <div className="space-y-4">
             <div>
@@ -170,10 +170,10 @@ const HireMe: React.FC = () => {
                 {copy.brings.map((item, index) => (
                   <li key={index} className="text-base text-minimal-grey-dark">
                     • {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
             <div>
               <h2 className="text-xl font-medium text-minimal-grey mb-2">Past Experience</h2>
@@ -181,79 +181,79 @@ const HireMe: React.FC = () => {
                 {copy.highlights.map((item, index) => (
                   <li key={index} className="text-base text-minimal-grey-dark">
                     • {item}
-                  </li>
-                ))}
-              </ul>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-          </div>
 
           <div>
             <h2 className="text-xl font-medium text-minimal-grey mb-2">Relevant Projects</h2>
             <div className="space-y-2">
-              {copy.projects.slice(0, 2).map((p) => (
+                {copy.projects.slice(0, 2).map((p) => (
                 <div key={p.title} className="px-2 py-1 rounded hover:bg-minimal-grey-darker/20 transition-colors">
                   <h3 className="text-base font-medium text-minimal-grey mb-1">{p.title}</h3>
                   <p className="text-sm text-minimal-grey-dark mb-2">{p.description}</p>
                   <div className="flex flex-wrap gap-2">
-                    {p.demo && (
-                      <a
-                        href={p.demo}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        {p.demo && (
+                          <a
+                            href={p.demo}
+                            target="_blank"
+                            rel="noopener noreferrer"
                         className="text-xs text-minimal-red hover:text-minimal-red-light transition-colors"
-                      >
+                          >
                         Demo →
-                      </a>
-                    )}
-                    {p.liveSite && (
-                      <a
-                        href={p.liveSite}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                          </a>
+                        )}
+                        {p.liveSite && (
+                          <a
+                            href={p.liveSite}
+                            target="_blank"
+                            rel="noopener noreferrer"
                         className="text-xs text-minimal-red hover:text-minimal-red-light transition-colors"
-                      >
+                          >
                         Live Site →
-                      </a>
-                    )}
-                    {p.github && (
-                      <a
-                        href={p.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                          </a>
+                        )}
+                        {p.github && (
+                          <a
+                            href={p.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
                         className="text-xs text-minimal-red hover:text-minimal-red-light transition-colors"
-                      >
+                          >
                         GitHub →
-                      </a>
-                    )}
+                          </a>
+                        )}
+                    </div>
                   </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
             <div className="mt-4">
               <Link
                 to="/projects"
                 className="text-base text-minimal-red hover:text-minimal-red-light transition-colors"
-              >
+                >
                 View More Projects →
               </Link>
+              </div>
             </div>
-          </div>
 
           <div>
             <h2 className="text-xl font-medium text-minimal-grey mb-2">Tech Stack</h2>
             <div className="flex flex-wrap gap-2">
-              {copy.skills.map((skill) => (
-                <span
-                  key={skill}
+                {copy.skills.map((skill) => (
+                  <span
+                    key={skill}
                   className="text-xs px-2 py-1 bg-minimal-grey-darker text-minimal-grey rounded"
-                >
-                  {skill}
-                </span>
-              ))}
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </div>
-      </div>
     </div>
   );
 };
