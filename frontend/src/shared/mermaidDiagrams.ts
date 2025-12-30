@@ -20,13 +20,14 @@ flowchart LR
 
     Redis[(Redis<br/>Broker & Backend)]
 
-    subgraph Worker ["Worker Container"]
+    subgraph Worker ["WorkerContainer"]
         direction TB
         Worker_Process[Worker Process]
         Agents[Specialized Sub-Agent]
-    end
+        Worker_Process -->|Spawn| Agents
+        Agents -.->|Result| Worker_Process
 
-    Ext[External APIs]
+    end
 
     %% Styling - Refined Professional Palette
     classDef apiContainer fill:#BBDEFB,stroke:#1565C0,stroke-width:3px,color:#000;
@@ -34,14 +35,12 @@ flowchart LR
     classDef infrastructure fill:#FFCCBC,stroke:#D84315,stroke-width:3px,color:#000;
     classDef component fill:#FAFAFA,stroke:#424242,stroke-width:2px,color:#000;
     classDef user fill:#B3E5FC,stroke:#0288D1,stroke-width:2px,color:#000;
-    classDef external fill:#C5E1A5,stroke:#558B2F,stroke-width:2px,color:#000;
 
     class API apiContainer;
     class Worker workerContainer;
     class Redis infrastructure;
     class API_Endpoint,Supervisor,SSE,Worker_Process,Agents component;
     class User user;
-    class Ext external;
 
     %% Flows
     User -->|Query/Context | API_Endpoint
@@ -51,8 +50,6 @@ flowchart LR
     Supervisor -->|Delegate| Redis
 
     Redis -->|Pop| Worker_Process
-    Worker_Process -->|Spawn| Agents
-    Agents -->|Action| Ext
 
     Worker_Process -.->|Status| Redis
     Redis -.->|Stream| SSE
@@ -60,7 +57,7 @@ flowchart LR
 
     %% Edge Styling - Simplified arrows
     linkStyle 0 stroke:#757575,stroke-width:6px
-    linkStyle 1 stroke:#757575,stroke-width:6px
+    linkStyle 1 stroke:#757575,stroke-width:6px,stroke-dasharray: 15 10
     linkStyle 2 stroke:#757575,stroke-width:6px
     linkStyle 3 stroke:#757575,stroke-width:6px
     linkStyle 4 stroke:#757575,stroke-width:6px
@@ -72,7 +69,7 @@ flowchart LR
     description: 'New architecture of the personal assistant showing the API container with supervisor agent, Redis broker for task delegation, worker containers with specialized sub-agents.'
   },
   'evaluator-optimizer-workflow': {
-    definition: `%%{init: {'themeVariables': {'fontSize': '50px'}}}%%
+    definition: `%%{init: {'themeVariables': {'fontSize': '40px'}}}%%
 flowchart LR
     Start[Query] --> Generate[Initial Response]
     Generate --> Overseer[Evaluator Model]
@@ -82,7 +79,7 @@ flowchart LR
     Evaluate -->|No| Clarify{Clarification needed?}
     
     Clarify -->|Yes| Prompt[Prompt User]
-    Prompt --> Regenerate1[Regenerate]
+    Prompt --> Regenerate1[Regenerate Response]
     Regenerate1 -.-> Overseer
     
     Clarify -->|No| External{External data needed?}
