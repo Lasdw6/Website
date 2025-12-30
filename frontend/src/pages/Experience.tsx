@@ -12,7 +12,7 @@ interface ExperienceItem {
 
 const experiences: ExperienceItem[] = [
   {
-    title: "AI Software Engineering Intern",
+    title: "AI SWE Intern",
     company: "Manulife",
     logo: "manulife.svg",
     description: "A leading international financial services group. Building secure, compliant AI agent systems for customer and operational use cases.",
@@ -20,7 +20,7 @@ const experiences: ExperienceItem[] = [
     website: "https://www.manulife.com/"
   },
   {
-    title: "AI Software Engineering Intern",
+    title: "AI SWE Intern",
     company: "GOQii",
     logo: "GOQii.png",
     description: "GOQii is a global preventive healthcare platform that combines advanced wearable technology, expert coaching, and a holistic ecosystem to help users achieve a healthier lifestyle.",
@@ -28,7 +28,7 @@ const experiences: ExperienceItem[] = [
     website: "https://www.goqii.com/"
   },
   {
-    title: "Machine Learning Engineering Intern",
+    title: "ML Intern",
     company: "The Innovation Story",
     logo: "TIS.png",
     description: "The Innovation Story is a data-driven innovation company specializing in artificial intelligence, machine learning, and digital transformation solutions for global clients.",
@@ -36,7 +36,7 @@ const experiences: ExperienceItem[] = [
     website: "https://theinnovationstory.com/"
   },
   {
-    title: "Software Engineering Intern",
+    title: "SWE Intern",
     company: "Electron Online",
     logo: "electron.jpg",
     description: "A technology startup focused on building scalable web and cloud solutions, integrating modern AI and automation for businesses.",
@@ -44,7 +44,7 @@ const experiences: ExperienceItem[] = [
     website: "https://electrongroup.com/"
   },
   {
-    title: "Software Engineering Intern",
+    title: "SWE Intern",
     company: "SciTara Technologies",
     logo: "Scitara.png",
     description: "A scientific software company focused on laboratory automation and data integration for clinical and research environments.",
