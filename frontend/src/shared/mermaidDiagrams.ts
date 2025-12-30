@@ -5,7 +5,8 @@ export interface MermaidDiagramConfig {
 
 export const mermaidDiagrams: Record<string, MermaidDiagramConfig> = {
   'assistant-architecture-2': {
-    definition: `flowchart LR
+    definition: `%%{init: {'themeVariables': {'fontSize': '50px'}, 'flowchart': {'nodeSpacing': 80, 'rankSpacing': 200, 'padding': 30}}}%%
+flowchart LR
     %% Horizontal layout
 
     User[Mobile interface]
@@ -19,7 +20,7 @@ export const mermaidDiagrams: Record<string, MermaidDiagramConfig> = {
 
     Redis[(Redis<br/>Broker & Backend)]
 
-    subgraph Worker [Worker Container - Celery]
+    subgraph Worker ["Worker Container"]
         direction TB
         Worker_Process[Worker Process]
         Agents[Specialized Sub-Agent]
@@ -28,12 +29,12 @@ export const mermaidDiagrams: Record<string, MermaidDiagramConfig> = {
     Ext[External APIs]
 
     %% Styling - Refined Professional Palette
-    classDef apiContainer fill:#BBDEFB,stroke:#1565C0,stroke-width:3px,color:#000,font-size:16px;
-    classDef workerContainer fill:#D1C4E9,stroke:#512DA8,stroke-width:3px,color:#000,font-size:16px;
-    classDef infrastructure fill:#FFCCBC,stroke:#D84315,stroke-width:3px,color:#000,font-size:16px;
-    classDef component fill:#FAFAFA,stroke:#424242,stroke-width:2px,color:#000,font-size:16px;
-    classDef user fill:#B3E5FC,stroke:#0288D1,stroke-width:2px,color:#000,font-size:16px;
-    classDef external fill:#C5E1A5,stroke:#558B2F,stroke-width:2px,color:#000,font-size:16px;
+    classDef apiContainer fill:#BBDEFB,stroke:#1565C0,stroke-width:3px,color:#000;
+    classDef workerContainer fill:#D1C4E9,stroke:#512DA8,stroke-width:3px,color:#000;
+    classDef infrastructure fill:#FFCCBC,stroke:#D84315,stroke-width:3px,color:#000;
+    classDef component fill:#FAFAFA,stroke:#424242,stroke-width:2px,color:#000;
+    classDef user fill:#B3E5FC,stroke:#0288D1,stroke-width:2px,color:#000;
+    classDef external fill:#C5E1A5,stroke:#558B2F,stroke-width:2px,color:#000;
 
     class API apiContainer;
     class Worker workerContainer;
@@ -43,31 +44,31 @@ export const mermaidDiagrams: Record<string, MermaidDiagramConfig> = {
     class Ext external;
 
     %% Flows
-    User -->|1. Query/Context | API_Endpoint
-    API_Endpoint -->|2. Evaluate| Supervisor
+    User -->|Query/Context | API_Endpoint
+    API_Endpoint -->|Evaluate| Supervisor
 
-    Supervisor -->|2a. Quick Reply| User
-    Supervisor -->|2b. Delegate| Redis
+    Supervisor -->|Quick Reply| User
+    Supervisor -->|Delegate| Redis
 
-    Redis -->|3. Pop| Worker_Process
-    Worker_Process -->|4. Spawn| Agents
+    Redis -->|Pop| Worker_Process
+    Worker_Process -->|Spawn| Agents
     Agents -->|Action| Ext
 
-    Worker_Process -.->|5. Status| Redis
-    Redis -.->|6. Stream| SSE
-    SSE -.->|7. Notify| User
+    Worker_Process -.->|Status| Redis
+    Redis -.->|Stream| SSE
+    SSE -.->|Notify| User
 
-    %% Edge Styling - Make arrows more visible with border
-    linkStyle 0 stroke:#f5f5f5,stroke-width:5px,stroke-linejoin:round,stroke-linecap:round
-    linkStyle 1 stroke:#f5f5f5,stroke-width:5px,stroke-linejoin:round,stroke-linecap:round
-    linkStyle 2 stroke:#f5f5f5,stroke-width:5px,stroke-linejoin:round,stroke-linecap:round
-    linkStyle 3 stroke:#f5f5f5,stroke-width:5px,stroke-linejoin:round,stroke-linecap:round
-    linkStyle 4 stroke:#f5f5f5,stroke-width:5px,stroke-linejoin:round,stroke-linecap:round
-    linkStyle 5 stroke:#f5f5f5,stroke-width:5px,stroke-linejoin:round,stroke-linecap:round
-    linkStyle 6 stroke:#f5f5f5,stroke-width:5px,stroke-linejoin:round,stroke-linecap:round
-    linkStyle 7 stroke:#f5f5f5,stroke-width:5px,stroke-dasharray: 20 10,stroke-linejoin:round,stroke-linecap:round
-    linkStyle 8 stroke:#f5f5f5,stroke-width:5px,stroke-dasharray: 20 10,stroke-linejoin:round,stroke-linecap:round
-    linkStyle 9 stroke:#f5f5f5,stroke-width:5px,stroke-dasharray: 20 10,stroke-linejoin:round,stroke-linecap:round`,
+    %% Edge Styling - Simplified arrows
+    linkStyle 0 stroke:#757575,stroke-width:6px
+    linkStyle 1 stroke:#757575,stroke-width:6px
+    linkStyle 2 stroke:#757575,stroke-width:6px
+    linkStyle 3 stroke:#757575,stroke-width:6px
+    linkStyle 4 stroke:#757575,stroke-width:6px
+    linkStyle 5 stroke:#757575,stroke-width:6px
+    linkStyle 6 stroke:#757575,stroke-width:6px
+    linkStyle 7 stroke:#757575,stroke-width:6px,stroke-dasharray: 15 10
+    linkStyle 8 stroke:#757575,stroke-width:6px,stroke-dasharray: 15 10
+    linkStyle 9 stroke:#757575,stroke-width:6px,stroke-dasharray: 15 10`,
     description: 'New architecture of the personal assistant showing the API container with supervisor agent, Redis broker for task delegation, worker containers with specialized sub-agents.'
   },
   'evaluator-optimizer-workflow': {
