@@ -3,6 +3,7 @@ export interface BlogPost {
   slug: string;
   date: string;
   lastUpdated?: string;
+  subtitle?: string;
   content: string;
   mermaidDiagram?: string; // Key to reference a diagram from mermaidDiagrams.ts
   mermaidDiagrams?: Array<{ key: string; insertAfter: string }>; // Multiple diagrams with insertion points
@@ -14,6 +15,7 @@ export const blogPosts: BlogPost[] = [
     slug: "how-i-learned-to-code-by-building",
     date: "2025-12-28",
     lastUpdated: "2025-12-28",
+    subtitle: "My coding journey in chronological order top to bottom",
     content: `• Participated in a Google-hosted Scratch game making competition
 
 • Tried making games on Roblox and learned a little bit of Lua
@@ -91,29 +93,12 @@ export const blogPosts: BlogPost[] = [
 • Rebranded and refined my [personal website](/projects/personal-portfolio-website) to reflect current focus`
   },
   {
-    title: "Why I Code (and What I Avoid Building)",
-    slug: "why-i-code-and-what-i-avoid-building",
-    date: "2024-01-15",
-    lastUpdated: "2024-12-10",
-    content: `I've been coding for several years now, and I've learned that not every problem needs a technical solution. Some of the best code I've written is the code I didn't write at all.
-
-When I first started programming, I wanted to build everything. Every idea seemed like a potential project. But over time, I've developed a clearer sense of what's worth building and what isn't.
-
-The projects that excite me most are the ones that solve real problems I face daily. They're the tools that make my workflow smoother, the scripts that automate repetitive tasks, and the applications that genuinely improve how I work or learn.
-
-I avoid building things just because I can. I avoid building things that already exist and work well. I avoid building things that don't solve a problem I actually have.
-
-This approach has led me to focus on AI agents and automation tools—things that genuinely make a difference in how I approach problems. It's not about the technology for its own sake; it's about what the technology enables.
-
-The best code is often the simplest code that solves the problem. And sometimes, the best solution is recognizing that code isn't the solution at all.`
-  },
-  {
     title: "My Favorite Project",
     slug: "my-favorite-project",
     date: "2024-02-20",
-    lastUpdated: "2024-12-05",
+    lastUpdated: "2025-12-29",
     mermaidDiagrams: [
-      { key: 'evaluator-optimizer-workflow', insertAfter: 'evaluator-optmizer workflow' },
+      { key: 'evaluator-optimizer-workflow', insertAfter: 'evaluator-optimizer workflow' },
       { key: 'assistant-architecture-2', insertAfter: 'rearchitected' }
     ],
     content: `My favorite project is the [Personal Assistant](/projects/agentic-personal-assistant) I built and actively use.
@@ -124,7 +109,7 @@ That usefulness is what kept pulling me back.
 
 What began as a script quickly turned into a system. I started integrating additional tools like better web search, document ingestion and retrieval, and structured storage to expand the capabilities of the system. Each new capability like google drive and calendar access made the agent be spread thinner across multiple areas.
 
-To manage this growing complexity of the agent, I began exploring different agentic architectures. I experimented with single-agent designs and settled on the evaluator-optmizer workflow for the system, along with adding retrieval-augmented generation and both short-term and long-term memory. This shifted the assistant from something reactive into something that could accumulate context over time.
+To manage this growing complexity of the agent, I began exploring different agentic architectures. I experimented with single-agent designs and settled on the [evaluator-optimizer workflow](https://www.anthropic.com/engineering/building-effective-agents#workflow-evaluator-optimizer) for the agent, along with adding retrieval-augmented generation and both short-term and long-term memory. This shifted the assistant from something reactive into something that could accumulate context over time.
 
 To make the assistant accessible outside my machine, I hosted it on a virtual machine on AWS and built a mobile interface using React Native and Expo. That decision added an entirely new world of possibilities to build out the assistant. 
 

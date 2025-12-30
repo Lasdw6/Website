@@ -6,7 +6,7 @@ const Blog: React.FC = () => {
   if (blogPosts.length === 0) {
     return (
       <div>
-        <h2 className="text-xl font-medium text-minimal-grey mb-0.5">Writing</h2>
+        <h2 className="text-xl font-medium text-minimal-grey mb-0.5">Reads</h2>
         <div className="space-y-0.5">
           {/* Blog posts will appear here */}
         </div>
@@ -16,12 +16,12 @@ const Blog: React.FC = () => {
 
   return (
     <div>
-      <h2 className="text-xl font-medium text-minimal-grey mb-0.5">Writing</h2>
+      <h2 className="text-xl font-medium text-minimal-grey mb-0.5">Reads</h2>
       <div className="space-y-0.5">
         {blogPosts.map((post, index) => (
           <Link
             key={index}
-            to={`/writing/${post.slug}`}
+            to={`/reads/${post.slug}`}
             className="block px-2 py-0 rounded hover:bg-minimal-grey-darker/20 transition-colors"
           >
             <div className="text-base text-minimal-grey">

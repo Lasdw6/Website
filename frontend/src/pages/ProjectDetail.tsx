@@ -17,6 +17,70 @@ const ProjectDetail: React.FC = () => {
 
   const primaryLink = project.demo || project.liveSite || project.github;
 
+  // Function to render text with markdown-style links
+  const renderTextWithLinks = (text: string) => {
+    const linkPattern = /\[([^\]]+)\]\(([^)]+)\)/g;
+    const parts: Array<{ type: 'text' | 'link'; content: string; url?: string }> = [];
+    let lastIndex = 0;
+    let match;
+    let hasLinks = false;
+
+    while ((match = linkPattern.exec(text)) !== null) {
+      hasLinks = true;
+      // Add text before the link
+      if (match.index > lastIndex) {
+        parts.push({ type: 'text', content: text.substring(lastIndex, match.index) });
+      }
+      // Add the link
+      parts.push({ type: 'link', content: match[1], url: match[2] });
+      lastIndex = match.index + match[0].length;
+    }
+    // Add remaining text
+    if (lastIndex < text.length) {
+      parts.push({ type: 'text', content: text.substring(lastIndex) });
+    }
+
+    // If no links found, just return the text
+    if (!hasLinks) {
+      return <>{text}</>;
+    }
+
+    // Render parts with links
+    return (
+      <>
+        {parts.map((part, index) => {
+          if (part.type === 'link') {
+            // Check if it's an internal route (starts with /) or external URL
+            if (part.url?.startsWith('/')) {
+              return (
+                <Link
+                  key={index}
+                  to={part.url}
+                  className="text-minimal-red hover:underline"
+                >
+                  {part.content}
+                </Link>
+              );
+            } else {
+              return (
+                <a
+                  key={index}
+                  href={part.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-minimal-red hover:underline"
+                >
+                  {part.content}
+                </a>
+              );
+            }
+          }
+          return <span key={index}>{part.content}</span>;
+        })}
+      </>
+    );
+  };
+
   return (
     <div className="pt-16 pb-8 flex justify-center">
       <div className="max-w-2xl w-full px-4 sm:px-6 lg:px-8">
@@ -35,9 +99,13 @@ const ProjectDetail: React.FC = () => {
           </div>
 
           <div className="space-y-6">
-            <p className="text-base text-minimal-grey leading-relaxed">
-              {project.description}
-            </p>
+            <div className="text-base text-minimal-grey leading-relaxed">
+              {project.description.split('\n\n').map((paragraph, index) => (
+                <p key={index} className={index > 0 ? 'mt-4' : ''}>
+                  {renderTextWithLinks(paragraph)}
+                </p>
+              ))}
+            </div>
             
             <div className="space-y-3">
               <h2 className="text-xl font-medium text-minimal-grey">Technologies</h2>

@@ -12,7 +12,7 @@ interface ExperienceItem {
 
 const experiences: ExperienceItem[] = [
   {
-    title: "Software Engineering Intern",
+    title: "AI Software Engineering Intern",
     company: "Manulife",
     logo: "manulife.svg",
     description: "A leading international financial services group. Building secure, compliant AI agent systems for customer and operational use cases.",
@@ -20,7 +20,7 @@ const experiences: ExperienceItem[] = [
     website: "https://www.manulife.com/"
   },
   {
-    title: "Software Engineering Intern",
+    title: "AI Software Engineering Intern",
     company: "GOQii",
     logo: "GOQii.png",
     description: "GOQii is a global preventive healthcare platform that combines advanced wearable technology, expert coaching, and a holistic ecosystem to help users achieve a healthier lifestyle.",
