@@ -105,3 +105,4 @@ const EducationDetail: React.FC = () => {
 
 export default EducationDetail;
 
+
