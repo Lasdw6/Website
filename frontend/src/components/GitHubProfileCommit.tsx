@@ -26,7 +26,7 @@ const GitHubProfileCommit: React.FC<GitHubProfileCommitProps> = ({ username }) =
       try {
         const { data, timestamp } = JSON.parse(cached);
         const cacheAge = Date.now() - timestamp;
-        const CACHE_DURATION = 60 * 60 * 1000; // 1 hour
+        const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
         
         if (cacheAge < CACHE_DURATION && data && data.length > 0) {
           setCommits(data);
@@ -113,13 +113,26 @@ const GitHubProfileCommit: React.FC<GitHubProfileCommitProps> = ({ username }) =
           }
         }
         
-        // Sort by date and take top 3
+        // Sort by date and get most recent commit from each unique repository
         const sorted = eventsCommits.sort((a, b) => 
           new Date(b.date).getTime() - new Date(a.date).getTime()
         );
         
-        if (sorted.length >= 3) {
-          const finalCommits = sorted.slice(0, 3);
+        // Group by repository and get most recent from each
+        const repoMap = new Map<string, Commit>();
+        sorted.forEach(commit => {
+          if (!repoMap.has(commit.repo)) {
+            repoMap.set(commit.repo, commit);
+          }
+        });
+        
+        const uniqueRepoCommits = Array.from(repoMap.values());
+        const finalSorted = uniqueRepoCommits.sort((a, b) => 
+          new Date(b.date).getTime() - new Date(a.date).getTime()
+        );
+        
+        if (finalSorted.length >= 3) {
+          const finalCommits = finalSorted.slice(0, 3);
           setCommits(finalCommits);
           // Cache the results
           localStorage.setItem(cacheKey, JSON.stringify({
@@ -128,9 +141,9 @@ const GitHubProfileCommit: React.FC<GitHubProfileCommitProps> = ({ username }) =
           }));
           setLoading(false);
           return;
-        } else if (sorted.length > 0) {
+        } else if (finalSorted.length > 0) {
           // If we have some commits, show them but also try to get more from repos
-          setCommits(sorted.slice(0, sorted.length));
+          setCommits(finalSorted.slice(0, finalSorted.length));
           setLoading(false);
           // Continue to fetch from repos to potentially get more commits
         }
@@ -177,9 +190,9 @@ const GitHubProfileCommit: React.FC<GitHubProfileCommitProps> = ({ username }) =
               return;
             }
             
-            // Get latest commit from each repo (fetch from more repos to get better results)
+            // Get latest 3 commits from each repo to ensure we get enough commits
             const commitPromises = repos.slice(0, 10).map(repo => 
-              fetch(`https://api.github.com/repos/${repo.full_name}/commits?per_page=1`, {
+              fetch(`https://api.github.com/repos/${repo.full_name}/commits?per_page=3`, {
                 headers,
                 mode: 'cors'
               })
@@ -193,10 +206,11 @@ const GitHubProfileCommit: React.FC<GitHubProfileCommitProps> = ({ username }) =
             );
             
             Promise.all(commitPromises).then((commitArrays: any[]) => {
-              const allCommits: Commit[] = sorted.length > 0 ? [...sorted] : [];
+              const allCommits: Commit[] = finalSorted && finalSorted.length > 0 ? [...finalSorted] : [];
               
               commitArrays.forEach((commits, index) => {
                 if (commits && commits.length > 0) {
+                  // Only add the most recent commit from this repo
                   const commitData = commits[0];
                   // Check for duplicates
                   if (!allCommits.some(c => c.sha === commitData.sha)) {
@@ -212,8 +226,19 @@ const GitHubProfileCommit: React.FC<GitHubProfileCommitProps> = ({ username }) =
               });
               
               if (allCommits.length > 0) {
-                // Sort and take top 3
-                const finalSorted = allCommits.sort((a, b) => 
+                // Group by repository and get most recent from each
+                const repoMap = new Map<string, Commit>();
+                
+                allCommits.forEach(commit => {
+                  const existing = repoMap.get(commit.repo);
+                  if (!existing || new Date(commit.date) > new Date(existing.date)) {
+                    repoMap.set(commit.repo, commit);
+                  }
+                });
+                
+                // Convert back to array, sort by date, and take top 3
+                const uniqueRepoCommits = Array.from(repoMap.values());
+                const finalSorted = uniqueRepoCommits.sort((a, b) => 
                   new Date(b.date).getTime() - new Date(a.date).getTime()
                 );
                 const finalCommits = finalSorted.slice(0, 3);
