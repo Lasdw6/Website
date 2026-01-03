@@ -5,6 +5,7 @@ export interface ExperienceItem {
   period: string;
   location: string;
   website?: string;
+  shortDescription?: string;
   description: string;
   achievements: string[];
   technologies: string[];
@@ -19,6 +20,7 @@ export const experiences: ExperienceItem[] = [
     period: "Sept. 2025 - Dec. 2025",
     location: "Toronto, Canada",
     website: "https://www.manulife.com/",
+    shortDescription: "AI-driven incident triage system reducing triage time from 2 hours to 5 minutes.",
     description: "Worked on the GenAI Team at Manulife, a leading international financial services group. Focused on building secure, compliant AI agent systems for customer and operational use cases, with a particular emphasis on production reliability and scalability.",
     achievements: [
       "Owned backend orchestration and reliability for a production AI-driven incident triage system used by 1,000+ employees, reducing average triage time from 2 hours to 5 minutes. This system leveraged advanced LLM capabilities to automatically categorize, prioritize, and route incidents, significantly improving operational efficiency.",
@@ -35,6 +37,7 @@ export const experiences: ExperienceItem[] = [
     period: "May 2025 - Aug. 2025",
     location: "Mumbai, India",
     website: "https://www.goqii.com/",
+    shortDescription: "Medical assistant enabling doctors to query 50k+ patient records in 30 seconds.",
     description: "Worked at GOQii, a global preventive healthcare platform that combines advanced wearable technology, expert coaching, and a holistic ecosystem to help users achieve healthier lifestyles. Focused on building AI-powered solutions to improve healthcare workflows and data processing.",
     achievements: [
       "Owned the design and development of a medical assistant application enabling doctors to query 50k+ patient records efficiently. The system utilized advanced RAG (Retrieval-Augmented Generation) techniques to provide contextual, accurate responses to medical queries. This innovation reduced information lookup time from 5 minutes to 30 seconds, allowing healthcare professionals to spend more time with patients and make faster, more informed decisions.",
@@ -50,6 +53,7 @@ export const experiences: ExperienceItem[] = [
     period: "Dec. 2024 - Feb. 2025",
     location: "Remote, Canada",
     website: "https://theinnovationstory.com/",
+    shortDescription: "Computer vision system achieving 94.3% mAP@0.5 with 206ms CPU inference.",
     description: "Worked at The Innovation Story, a data-driven innovation company specializing in artificial intelligence, machine learning, and digital transformation solutions. Focused on developing lightweight, efficient ML models optimized for mobile and edge deployment.",
     achievements: [
       "Designed and implemented a lightweight, graph-based recommendation algorithm optimized for deployment in a mobile education application. The algorithm leveraged graph neural networks to model user-item interactions and learning patterns, providing personalized recommendations while maintaining low computational overhead. The solution was specifically engineered to run efficiently on mobile devices with limited processing power.",
@@ -65,6 +69,7 @@ export const experiences: ExperienceItem[] = [
     period: "Sep. 2024 - Dec. 2024",
     location: "Mumbai, India",
     website: "https://electrongroup.com/",
+    shortDescription: "Analytics platform processing 10k+ social media posts monthly with sentiment analysis.",
     description: "Worked at Electron Online, a technology startup focused on building scalable web and cloud solutions, integrating modern AI and automation for businesses. Contributed to building analytics platforms and large-scale data processing systems.",
     achievements: [
       "Owned backend development for an analytics platform processing 10,000+ social media posts per month. The platform enabled automated sentiment analysis and performance reporting for client businesses, providing actionable insights into social media engagement and brand perception. Built RESTful APIs, data aggregation services, and reporting dashboards that transformed raw social media data into meaningful business intelligence.",
@@ -80,6 +85,7 @@ export const experiences: ExperienceItem[] = [
     period: "May 2022 - June 2022",
     location: "Marlborough, MA, USA",
     website: "https://scitara.com/",
+    shortDescription: "Laboratory automation and data collection optimization for clinical environments.",
     description: "Worked at SciTara Technologies, a scientific software company focused on laboratory automation and data integration for clinical and research environments. Contributed to developing solutions that streamline laboratory workflows and improve data collection processes.",
     achievements: [
       "Developed device automation solutions to streamline laboratory equipment operations, reducing manual intervention and improving efficiency in clinical data collection processes.",

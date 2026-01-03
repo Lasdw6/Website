@@ -10,7 +10,7 @@ const Projects: React.FC = () => {
           Projects
         </h2>
       </Link>
-      <div className="space-y-0.5">
+      <div className="space-y-0">
         {projects.filter(project => !project.hideFromHome).map((project, index) => {
           const projectSlug = project.title.toLowerCase().replace(/\s+/g, '-');
           
@@ -20,9 +20,14 @@ const Projects: React.FC = () => {
               to={`/projects/${projectSlug}`}
               className="block px-2 py-0 rounded hover:bg-minimal-grey-darker/20 transition-colors"
             >
-              <div className="text-base text-minimal-grey">
+              <div className="text-base text-minimal-grey leading-tight">
                 {project.title}
               </div>
+              {project.shortDescription && (
+                <div className="text-xs text-minimal-grey-dark opacity-75 leading-tight -mt-1 pl-2">
+                  {project.shortDescription}
+                </div>
+              )}
             </Link>
           );
         })}

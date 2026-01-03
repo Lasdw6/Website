@@ -9,10 +9,10 @@ const Education: React.FC = () => {
 
   return (
     <div>
-      <h2 className="text-xl font-medium text-minimal-grey mb-1">
+      <h2 className="text-xl font-medium text-minimal-grey mb-0.5">
         Education
       </h2>
-      <div className="space-y-0.5">
+      <div className="space-y-0">
         {education.map((edu, index) => {
           const slug = getEducationSlug(edu.university);
           return (

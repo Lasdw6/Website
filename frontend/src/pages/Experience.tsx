@@ -9,30 +9,35 @@ const Experience: React.FC = () => {
 
   return (
     <div>
-      <Link to="/work" className="block mb-1">
+      <Link to="/work" className="block mb-0.5">
         <h2 className="text-xl font-medium text-minimal-grey hover:text-minimal-red transition-colors cursor-pointer">
           Experience
         </h2>
       </Link>
-      <div className="space-y-0.5">
+      <div className="space-y-0">
         {experiences.map((exp, index) => {
           const slug = getExperienceSlug(exp.company);
           return (
             <Link
               key={index}
               to={`/experience/${slug}`}
-              className="flex items-start space-x-2 px-2 py-0 rounded hover:bg-minimal-grey-darker/20 transition-colors cursor-pointer block"
+              className="flex items-start space-x-2 px-2 py-0 rounded hover:bg-minimal-grey-darker/20 transition-colors cursor-pointer"
             >
               <img 
                 src={exp.logo}
                 alt={`${exp.company} Logo`} 
                 className="w-8 h-8 object-contain mt-0.5 flex-shrink-0"
               />
-              <div className="flex-1">
+              <div className="flex-1 min-w-0">
                 <div className="text-base text-minimal-grey leading-tight">
                   {exp.title}
                 </div>
-                <div className="text-xs text-minimal-grey-dark leading-tight -mt-0.5">
+                {exp.shortDescription && (
+                  <div className="text-xs text-minimal-grey-dark opacity-75 leading-tight -mt-1 pl-2">
+                    {exp.shortDescription}
+                  </div>
+                )}
+                <div className="text-xs font-bold text-minimal-grey-dark leading-tight -mt-0.5">
                   {exp.company}
                 </div>
               </div>

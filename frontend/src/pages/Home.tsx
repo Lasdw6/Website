@@ -9,8 +9,8 @@ import GitHubProfileCommit from '../components/GitHubProfileCommit';
 const Home: React.FC = () => {
   return (
     <div className="pt-16 pb-2 flex justify-center">
-      <div className="max-w-lg w-full px-4 sm:px-6 lg:px-8">
-        <div className="space-y-2">
+      <div className="max-w-2xl w-full px-4 sm:px-6 lg:px-8">
+        <div className="space-y-1">
           {/* Hero Section */}
           <section id="home">
             <h1 className="text-4xl font-medium text-minimal-grey">
