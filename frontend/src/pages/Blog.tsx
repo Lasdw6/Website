@@ -7,7 +7,7 @@ const Blog: React.FC = () => {
     return (
       <div>
         <h2 className="text-xl font-medium text-minimal-grey mb-0.5">Reads</h2>
-        <div className="space-y-0.5">
+        <div className="space-y-0">
           {/* Blog posts will appear here */}
         </div>
       </div>
@@ -17,7 +17,7 @@ const Blog: React.FC = () => {
   return (
     <div>
       <h2 className="text-xl font-medium text-minimal-grey mb-0.5">Reads</h2>
-      <div className="space-y-0.5">
+      <div className="space-y-0">
         {blogPosts.map((post, index) => (
           <Link
             key={index}
