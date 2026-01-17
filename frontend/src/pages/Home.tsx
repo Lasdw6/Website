@@ -3,7 +3,6 @@ import Experience from './Experience';
 import Education from './Education';
 import Projects from './Projects';
 import Blog from './Blog';
-import HoverCard from '../components/HoverCard';
 import GitHubProfileCommit from '../components/GitHubProfileCommit';
 
 const Home: React.FC = () => {
