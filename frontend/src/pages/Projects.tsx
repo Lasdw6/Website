@@ -13,7 +13,7 @@ const Projects: React.FC = () => {
       <div className="space-y-0">
         {projects.filter(project => !project.hideFromHome).map((project, index) => {
           const projectSlug = project.title.toLowerCase().replace(/\s+/g, '-');
-          
+
           return (
             <Link
               key={index}

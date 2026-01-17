@@ -5,9 +5,9 @@ import GitHubCommit from '../components/GitHubCommit';
 
 const ProjectDetail: React.FC = () => {
   const { projectSlug } = useParams<{ projectSlug: string }>();
-  
+
   // Create slug from title: lowercase, replace spaces with hyphens
-  const project = projects.find(p => 
+  const project = projects.find(p =>
     p.title.toLowerCase().replace(/\s+/g, '-') === projectSlug
   );
 
@@ -86,8 +86,8 @@ const ProjectDetail: React.FC = () => {
       <div className="max-w-2xl w-full px-4 sm:px-6 lg:px-8">
         <div className="space-y-8">
           <div className="mb-8">
-            <Link 
-              to="/" 
+            <Link
+              to="/"
               className="text-base text-minimal-grey hover:text-minimal-red transition-colors"
             >
               ← Back
@@ -106,7 +106,7 @@ const ProjectDetail: React.FC = () => {
                 </p>
               ))}
             </div>
-            
+
             <div className="space-y-3">
               <h2 className="text-xl font-medium text-minimal-grey">Technologies</h2>
               <div className="flex flex-wrap gap-2">
@@ -121,7 +121,7 @@ const ProjectDetail: React.FC = () => {
               </div>
             </div>
 
-            {(project.commitRepo || project.github) && /github\.com\/[^\/]+\/[^\/]+/.test(project.commitRepo || project.github || '') && (
+            {(project.commitRepo || project.github) && /github\.com\/[^/]+\/[^/]+/.test(project.commitRepo || project.github || '') && (
               <GitHubCommit githubUrl={project.commitRepo || project.github || ''} />
             )}
 

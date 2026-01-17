@@ -27,7 +27,7 @@ const GitHubProfileCommit: React.FC<GitHubProfileCommitProps> = ({ username }) =
         const { data, timestamp } = JSON.parse(cached);
         const cacheAge = Date.now() - timestamp;
         const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
-        
+
         if (cacheAge < CACHE_DURATION && data && data.length > 0) {
           setCommits(data);
           setLoading(false);
@@ -37,22 +37,22 @@ const GitHubProfileCommit: React.FC<GitHubProfileCommitProps> = ({ username }) =
         // Invalid cache, continue to fetch
       }
     }
-    
+
     const token = process.env.REACT_APP_GITHUB_TOKEN;
     const headers: HeadersInit = {
       'Accept': 'application/vnd.github.v3+json',
     };
-    
+
     if (token) {
       headers['Authorization'] = `token ${token}`;
     }
-    
+
     // Try authenticated endpoint first if token exists, fallback to public
     const tryAuthenticated = token ? true : false;
     const eventsUrl = tryAuthenticated
       ? `https://api.github.com/user/events?per_page=30`
       : `https://api.github.com/users/${username}/events/public?per_page=30`;
-    
+
     // Simple approach: fetch events first, then repos if needed
     fetch(eventsUrl, {
       headers,
@@ -95,9 +95,9 @@ const GitHubProfileCommit: React.FC<GitHubProfileCommitProps> = ({ username }) =
         if (!events) {
           return;
         }
-        
+
         const eventsCommits: Commit[] = [];
-        
+
         for (const event of events) {
           if (event.type === 'PushEvent' && event.payload && event.payload.commits) {
             const repoName = event.repo.name;
@@ -112,12 +112,12 @@ const GitHubProfileCommit: React.FC<GitHubProfileCommitProps> = ({ username }) =
             }
           }
         }
-        
+
         // Sort by date and get most recent commit from each unique repository
-        const sorted = eventsCommits.sort((a, b) => 
+        const sorted = eventsCommits.sort((a, b) =>
           new Date(b.date).getTime() - new Date(a.date).getTime()
         );
-        
+
         // Group by repository and get most recent from each
         const repoMap = new Map<string, Commit>();
         sorted.forEach(commit => {
@@ -125,12 +125,12 @@ const GitHubProfileCommit: React.FC<GitHubProfileCommitProps> = ({ username }) =
             repoMap.set(commit.repo, commit);
           }
         });
-        
+
         const uniqueRepoCommits = Array.from(repoMap.values());
-        const finalSorted = uniqueRepoCommits.sort((a, b) => 
+        const finalSorted = uniqueRepoCommits.sort((a, b) =>
           new Date(b.date).getTime() - new Date(a.date).getTime()
         );
-        
+
         if (finalSorted.length >= 3) {
           const finalCommits = finalSorted.slice(0, 3);
           setCommits(finalCommits);
@@ -147,13 +147,13 @@ const GitHubProfileCommit: React.FC<GitHubProfileCommitProps> = ({ username }) =
           setLoading(false);
           // Continue to fetch from repos to potentially get more commits
         }
-        
+
         // No commits from events or need more, try repos (including private if token exists)
         const tryAuthRepos = token ? true : false;
         const reposUrl = tryAuthRepos
           ? `https://api.github.com/user/repos?sort=updated&per_page=10&affiliation=owner`
           : `https://api.github.com/users/${username}/repos?sort=updated&per_page=10`;
-        
+
         return fetch(reposUrl, {
           headers,
           mode: 'cors'
@@ -189,9 +189,9 @@ const GitHubProfileCommit: React.FC<GitHubProfileCommitProps> = ({ username }) =
               setError(true);
               return;
             }
-            
+
             // Get latest 3 commits from each repo to ensure we get enough commits
-            const commitPromises = repos.slice(0, 10).map(repo => 
+            const commitPromises = repos.slice(0, 10).map(repo =>
               fetch(`https://api.github.com/repos/${repo.full_name}/commits?per_page=3`, {
                 headers,
                 mode: 'cors'
@@ -204,10 +204,10 @@ const GitHubProfileCommit: React.FC<GitHubProfileCommitProps> = ({ username }) =
                 })
                 .catch(() => null)
             );
-            
+
             Promise.all(commitPromises).then((commitArrays: any[]) => {
               const allCommits: Commit[] = finalSorted && finalSorted.length > 0 ? [...finalSorted] : [];
-              
+
               commitArrays.forEach((commits, index) => {
                 if (commits && commits.length > 0) {
                   // Only add the most recent commit from this repo
@@ -224,21 +224,21 @@ const GitHubProfileCommit: React.FC<GitHubProfileCommitProps> = ({ username }) =
                   }
                 }
               });
-              
+
               if (allCommits.length > 0) {
                 // Group by repository and get most recent from each
                 const repoMap = new Map<string, Commit>();
-                
+
                 allCommits.forEach(commit => {
                   const existing = repoMap.get(commit.repo);
                   if (!existing || new Date(commit.date) > new Date(existing.date)) {
                     repoMap.set(commit.repo, commit);
                   }
                 });
-                
+
                 // Convert back to array, sort by date, and take top 3
                 const uniqueRepoCommits = Array.from(repoMap.values());
-                const finalSorted = uniqueRepoCommits.sort((a, b) => 
+                const finalSorted = uniqueRepoCommits.sort((a, b) =>
                   new Date(b.date).getTime() - new Date(a.date).getTime()
                 );
                 const finalCommits = finalSorted.slice(0, 3);
@@ -286,7 +286,7 @@ const GitHubProfileCommit: React.FC<GitHubProfileCommitProps> = ({ username }) =
       <div className="space-y-0.5">
         {commits.map((commit, index) => {
           const commitMessage = commit.message.split('\n')[0];
-          
+
           return (
             <a
               key={index}
