@@ -1,4 +1,5 @@
 export interface ProjectItem {
+  slug?: string;
   title: string;
   description: string;
   shortDescription?: string;
@@ -14,6 +15,28 @@ export interface ProjectItem {
 }
 
 export const projects: ProjectItem[] = [
+  {
+    slug: "boostos-ai",
+    title: "BoostOS.ai",
+    period: "2026 - Present",
+    shortDescription: "Developer control plane for AI workflows.",
+    description: "BoostOS helps you orchestrate your AI agents, dev servers, and IDEs from one desktop control plane.",
+    technologies: ["AI Systems", "Automation", "Product Engineering"],
+    liveSite: "https://boostos.ai",
+    github: "https://github.com/Lasdw6/Boost",
+    image: "image.png"
+  },
+  {
+    slug: "harnessgg",
+    title: "Harness.gg",
+    period: "2026 - Present",
+    shortDescription: "Open-source CLI tools that let AI agents control desktop apps.",
+    description: "Harness.gg is a collection of open-source CLI tools that let AI agents control desktop apps. No MCP. No setup. Just install and go.",
+    technologies: ["CLI Tools", "Astro", "TypeScript", "React", "Tailwind CSS"],
+    liveSite: "https://harness.gg",
+    github: "https://github.com/Lasdw6/harnessgg",
+    image: "image.png"
+  },
   {
     title: "Agentic Personal Assistant",
     period: "Jan. 2025 - Present",
@@ -48,7 +71,8 @@ export const projects: ProjectItem[] = [
     description: "Web app for tracking job applications, with LLM email parsing and cloud deployment.",
     technologies: ["Python", "Typescript", "React", "MongoDB", "OAuth2", "LLMs", "Git"],
     github: "https://github.com/Lasdw6",
-    image: "JobTracker.png"
+    image: "JobTracker.png",
+    hideFromHome: true
   },
   {
     title: "Desktop Agent",
@@ -75,7 +99,8 @@ export const projects: ProjectItem[] = [
     description: "Flask web application that analyzes Spotify playlists using audio features (danceability, energy, valence, tempo) and provides personalized music recommendations. Features secure OAuth integration, playlist analysis, and smart recommendations based on audio characteristics.",
     technologies: ["Python", "Flask", "Spotify API", "Music Analysis", "OAuth"],
     github: "https://github.com/Lasdw6/Discoveriffy",
-    image: "image.png"
+    image: "image.png",
+    hideFromHome: true
   },
   {
     title: "Deep Research Agent",
@@ -109,6 +134,3 @@ export const projects: ProjectItem[] = [
     hideFromHome: true
   }
 ];
-
-
-

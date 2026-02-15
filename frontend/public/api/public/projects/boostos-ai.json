@@ -1,0 +1,25 @@
+{
+  "slug": "boostos-ai",
+  "name": "BoostOS.ai",
+  "status": "live",
+  "tagline": "Developer Control plane for AI-assisted work flows.",
+  "description": "BoostOS.ai is live and positioned as a Developer Control plane for AI-assisted work flows.",
+  "links": {
+    "website": "https://boostos.ai"
+  },
+  "lastUpdated": "2026-02-13",
+  "updates": [
+    {
+      "date": "2026-02-13",
+      "title": "Public landing page published",
+      "status": "live",
+      "summary": "Added a dedicated public landing endpoint and project page to centralize official updates from this portfolio.",
+      "links": [
+        {
+          "label": "BoostOS.ai",
+          "url": "https://boostos.ai"
+        }
+      ]
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { projects } from '../shared/projects';
 import { Link } from 'react-router-dom';
+import { toProjectSlug } from '../utils/projectSlug';
 
 const ProjectsDetail: React.FC = () => {
   return (
@@ -19,7 +20,7 @@ const ProjectsDetail: React.FC = () => {
 
           <div className="space-y-6">
             {projects.map((project, index) => {
-              const projectSlug = project.title.toLowerCase().replace(/\s+/g, '-');
+              const projectSlug = toProjectSlug(project);
               
               return (
                 <div key={index} className="space-y-2">

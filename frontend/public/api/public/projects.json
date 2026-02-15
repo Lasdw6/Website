@@ -1,0 +1,24 @@
+[
+  {
+    "slug": "boostos-ai",
+    "name": "BoostOS.ai",
+    "status": "live",
+    "tagline": "Developer Control plane for AI-assisted work flows.",
+    "description": "BoostOS.ai is live and positioned as a Developer Control plane for AI-assisted work flows.",
+    "links": {
+      "website": "https://boostos.ai"
+    },
+    "lastUpdated": "2026-02-13"
+  },
+  {
+    "slug": "harnessgg-electron",
+    "name": "@harnessgg/electron",
+    "status": "released",
+    "tagline": "CLI harness for AI agents to test Electron apps.",
+    "description": "@harnessgg/electron is published on npm as a CLI harness for AI agents to test Electron apps.",
+    "links": {
+      "npm": "https://www.npmjs.com/package/@harnessgg/electron"
+    },
+    "lastUpdated": "2026-02-13"
+  }
+]

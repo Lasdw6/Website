@@ -1,5 +1,6 @@
 import React from 'react';
 import { DocumentIcon } from '@heroicons/react/24/outline';
+import { BeakerIcon } from '@heroicons/react/24/outline';
 import { Link } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
@@ -15,6 +16,14 @@ const Navbar: React.FC = () => {
           </Link>
 
           <div className="flex items-center space-x-6">
+            <Link
+              to="/labs"
+              className="text-minimal-grey hover:text-minimal-red transition-colors"
+              title="Labs"
+              aria-label="Labs"
+            >
+              <BeakerIcon className="h-5 w-5" />
+            </Link>
             <a
               href="/resume.pdf"
               target="_blank"

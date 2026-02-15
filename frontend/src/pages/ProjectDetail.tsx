@@ -2,13 +2,13 @@ import React from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { projects } from '../shared/projects';
 import GitHubCommit from '../components/GitHubCommit';
+import { toProjectSlug } from '../utils/projectSlug';
 
 const ProjectDetail: React.FC = () => {
   const { projectSlug } = useParams<{ projectSlug: string }>();
 
-  // Create slug from title: lowercase, replace spaces with hyphens
   const project = projects.find(p =>
-    p.title.toLowerCase().replace(/\s+/g, '-') === projectSlug
+    toProjectSlug(p) === projectSlug
   );
 
   if (!project) {
@@ -198,4 +198,3 @@ const ProjectDetail: React.FC = () => {
 };
 
 export default ProjectDetail;
-

@@ -11,6 +11,8 @@ import WorkDetail from './pages/WorkDetail';
 import BlogDetail from './pages/BlogDetail';
 import ExperienceDetail from './pages/ExperienceDetail';
 import EducationDetail from './pages/EducationDetail';
+import LabsIndex from './pages/LabsIndex';
+import LabProjectDetail from './pages/LabProjectDetail';
 import { Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -26,6 +28,8 @@ function App() {
           <Route path="/github" element={<GitHub />} />
         <Route path="/projects" element={<ProjectsDetail />} />
         <Route path="/projects/:projectSlug" element={<ProjectDetail />} />
+        <Route path="/labs" element={<LabsIndex />} />
+        <Route path="/labs/:projectSlug" element={<LabProjectDetail />} />
         <Route path="/work" element={<WorkDetail />} />
         <Route path="/experience/:experienceSlug" element={<ExperienceDetail />} />
         <Route path="/education/:educationSlug" element={<EducationDetail />} />

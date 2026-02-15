@@ -1,0 +1,25 @@
+{
+  "slug": "harnessgg-electron",
+  "name": "@harnessgg/electron",
+  "status": "released",
+  "tagline": "CLI harness for AI agents to test Electron apps.",
+  "description": "@harnessgg/electron is published on npm as a CLI harness for AI agents to test Electron apps.",
+  "links": {
+    "npm": "https://www.npmjs.com/package/@harnessgg/electron"
+  },
+  "lastUpdated": "2026-02-13",
+  "updates": [
+    {
+      "date": "2026-02-13",
+      "title": "npm package public listing",
+      "status": "released",
+      "summary": "The package is publicly listed on npm as a CLI harness for AI agents to test Electron apps, with a dedicated update endpoint and landing page on the site.",
+      "links": [
+        {
+          "label": "npm package",
+          "url": "https://www.npmjs.com/package/@harnessgg/electron"
+        }
+      ]
+    }
+  ]
+}
