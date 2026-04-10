@@ -5,6 +5,7 @@ import Resume from './pages/Resume';
 import HireMe from './pages/HireMe';
 import LinkedIn from './pages/LinkedIn';
 import GitHub from './pages/GitHub';
+import Twitter from './pages/Twitter';
 import ProjectsDetail from './pages/ProjectsDetail';
 import ProjectDetail from './pages/ProjectDetail';
 import WorkDetail from './pages/WorkDetail';
@@ -26,6 +27,8 @@ function App() {
           <Route path="/Hireme" element={<HireMe />} />
           <Route path="/linkedin" element={<LinkedIn />} />
           <Route path="/github" element={<GitHub />} />
+          <Route path="/twitter" element={<Twitter />} />
+          <Route path="/x" element={<Twitter />} />
         <Route path="/projects" element={<ProjectsDetail />} />
         <Route path="/projects/:projectSlug" element={<ProjectDetail />} />
         <Route path="/labs" element={<LabsIndex />} />
