@@ -15,17 +15,6 @@ const Home: React.FC = () => {
             <h1 className="text-4xl font-medium text-minimal-grey">
               hi im vividh
             </h1>
-            <p className="mt-3 text-sm text-minimal-grey-dark">
-              explore the 3d room on{' '}
-              <a
-                href="https://world.vividh.lol"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-minimal-red hover:text-minimal-red-light transition-colors"
-              >
-                world.vividh.lol
-              </a>
-            </p>
           </section>
 
           <section id="education">
